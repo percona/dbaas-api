@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package percona.platform.dbaas.controller.v1beta1;
+
+option go_package = "controllerv1beta1";
+
+// RunningOperation respresents a long-running operation.
+message RunningOperation {
+  // Progress from 0.0 to 1.0; can decrease compared to the previous value.
+  float progress = 1;
+  // Text describing the current operation progress step.
+  string message = 2;
+}
+
+// KubeAuth represents Kubernetes / kubectl authentication and authorization information.
+message KubeAuth {
+  // Kubeconfig file content.
+  string kubeconfig = 1;
+}
+
+// ComputeResources represents container computer resources requests or limits.
+message ComputeResources {
+  // CPUs in milliCPUs; 1000m = 1 vCPU.
+  int32 cpu_m = 1;
+  // Memory in bytes.
+  int64 memory_bytes = 2;
+}

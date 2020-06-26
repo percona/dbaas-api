@@ -1,0 +1,197 @@
+---
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    name: Test
+
+    strategy:
+      matrix:
+        go-version: [1.14.x]
+        os: [ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    env:
+      GOPRIVATE: github.com/percona-platform
+      GOFLAGS: -v -mod=readonly
+
+    steps:
+      - name: Set up Go ${{ matrix.go-version }}
+        uses: percona-platform/setup-go@v1
+        with:
+          go-version: ${{ matrix.go-version }}
+
+      - name: Check out code into the Go module directory
+        uses: percona-platform/checkout@v2
+
+      # useful debug commands
+      # - run: env
+      # - run: go env
+      # - run: pwd
+
+      - name: Enable Go modules cache
+        uses: percona-platform/cache@v1
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ matrix.os }}-go-${{ matrix.go-version }}-modules-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ matrix.os }}-go-${{ matrix.go-version }}-modules-
+
+      - name: Enable Go build cache
+        uses: percona-platform/cache@v1
+        with:
+          path: ~/.cache/go-build
+          key: ${{ matrix.os }}-go-${{ matrix.go-version }}-build-${{ github.ref }}-${{ hashFiles('**') }}
+          restore-keys: |
+            ${{ matrix.os }}-go-${{ matrix.go-version }}-build-${{ github.ref }}-
+            ${{ matrix.os }}-go-${{ matrix.go-version }}-build-
+
+      - name: Enable experimental Docker features for --squash flag
+        run: sudo .github/workflows/enable-docker-experimental.sh
+
+      - name: Login in Docker registry
+        run: docker login -u $GITHUB_ACTOR -p ${{ secrets.GITHUB_TOKEN }} docker.pkg.github.com
+
+      - name: Download Go modules
+        run: go mod download
+
+      - name: Install tools
+        run: make init
+
+      - name: Generate API code using dev docker image
+        run: |
+          make gen-dev
+          sudo chown -R runner:docker gen
+
+      - name: Generate Go code
+        run: make gen-code
+
+      - name: Run tests
+        run: |
+          go clean -testcache
+          make test
+
+      - name: Check that there are no source code changes
+        run: |
+          # Break CI if any files were changed during its run (code generation, etc), except go.sum.
+          # `go mod tidy` could remove old checksums from that file, and that's okay on CI,
+          # and actually expected for PRs made by @dependabot.
+          # Checksums of actually used modules are checked by previous `go` subcommands.
+          go mod tidy
+          git checkout go.sum
+          git diff --exit-code
+
+  check:
+    name: Check
+    timeout-minutes: 5
+    if: github.event_name == 'pull_request'
+
+    strategy:
+      matrix:
+        go-version: [1.14.x]
+        os: [ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    env:
+      GOPRIVATE: github.com/percona-platform
+      GOFLAGS: -v -mod=readonly
+
+    steps:
+      - name: Configure git for private modules
+        env:
+          ROBOT_TOKEN: ${{ secrets.ROBOT_TOKEN }}
+        run: git config --global url."https://percona-platform-robot:${ROBOT_TOKEN}@github.com".insteadOf "https://github.com"
+
+      - name: Set up Go ${{ matrix.go-version }}
+        uses: percona-platform/setup-go@v1
+        with:
+          go-version: ${{ matrix.go-version }}
+
+      - name: Check out code into the Go module directory
+        uses: percona-platform/checkout@v2
+
+      # useful debug commands
+      # - run: env
+      # - run: go env
+      # - run: pwd
+
+      - name: Enable Go modules cache
+        uses: percona-platform/cache@v1
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ matrix.os }}-go-${{ matrix.go-version }}-modules-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ matrix.os }}-go-${{ matrix.go-version }}-modules-
+
+      - name: Enable Go build cache
+        uses: percona-platform/cache@v1
+        with:
+          path: ~/.cache/go-build
+          key: ${{ matrix.os }}-go-${{ matrix.go-version }}-build-${{ github.ref }}-${{ hashFiles('**') }}
+          restore-keys: |
+            ${{ matrix.os }}-go-${{ matrix.go-version }}-build-${{ github.ref }}-
+            ${{ matrix.os }}-go-${{ matrix.go-version }}-build-
+
+      - name: Download Go modules
+        run: go mod download
+
+      - name: Install tools
+        run: make init
+
+      - name: Run checks/linters
+        run: |
+          # use GITHUB_TOKEN because only it has access to GitHub Checks API
+          bin/golangci-lint run -c=.golangci-required.yml --out-format=line-number |  env REVIEWDOG_GITHUB_API_TOKEN=${{ secrets.GITHUB_TOKEN }} bin/reviewdog -f=golangci-lint -level=error -reporter=github-pr-check -name='Required checks'
+
+          # use ROBOT_TOKEN for better reviewer's name
+          bin/golangci-lint run --out-format=line-number | env REVIEWDOG_GITHUB_API_TOKEN=${{ secrets.ROBOT_TOKEN  }}  bin/reviewdog -f=golangci-lint -level=error -reporter=github-pr-review -name='Linters'
+
+          # run it like that until some of those issues/PRs are resolved:
+          # * https://github.com/quasilyte/go-consistent/issues/33
+          # * https://github.com/golangci/golangci-lint/issues/288
+          # * https://github.com/reviewdog/errorformat/pull/47 (once it is atually used by reviewdog)
+          bin/go-consistent -pedantic ./...
+
+      - name: Check that there are no source code changes
+        run: |
+          # Break CI if any files were changed during its run (code generation, etc), except go.sum.
+          # `go mod tidy` could remove old checksums from that file, and that's okay on CI,
+          # and actually expected for PRs made by @dependabot.
+          # Checksums of actually used modules are checked by previous `go` subcommands.
+          go mod tidy
+          git checkout go.sum
+          git diff --exit-code
+
+  build:
+    name: Build Docker image
+    timeout-minutes: 5
+    needs: test
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    env:
+      GOPRIVATE: github.com/percona-platform
+      GOFLAGS: -v -mod=readonly
+
+    steps:
+      - name: Check out code into the Go module directory
+        uses: percona-platform/checkout@v2
+
+      - name: Enable experimental Docker features for --squash flag
+        run: sudo .github/workflows/enable-docker-experimental.sh
+
+      - name: Login in Docker registry
+        run: docker login -u $GITHUB_ACTOR -p ${{ secrets.GITHUB_TOKEN }} docker.pkg.github.com
+
+      - name: Build Docker image
+        run: make docker-build
+
+      - name: Tag and push Docker image
+        run: make docker-push

@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package percona.platform.dbaas.controller.v1beta1;
+
+option go_package = "controllerv1beta1";
+
+import "controller/common.proto";
+import "controller/xtra_db_cluster.proto";
+import "github.com/mwitkow/go-proto-validators/validator.proto";
+import "google/protobuf/timestamp.proto";
+
+// XtraDBClusterBackupAPI provides APIs for managing XtraDB clusters backups.
+service XtraDBClusterBackupAPI {
+  // ListXtraDBClusterBackups returns a list of XtraDB clusters backups.
+  rpc ListXtraDBClusterBackups(ListXtraDBClusterBackupsRequest) returns (ListXtraDBClusterBackupsResponse);
+  // CreateXtraDBClusterBackup makes a new XtraDB cluster on-demand backup.
+  rpc CreateXtraDBClusterBackup(CreateXtraDBClusterBackupRequest) returns (CreateXtraDBClusterBackupResponse);
+  // DeleteXtraDBClusterBackup deletes XtraDB cluster backup.
+  rpc DeleteXtraDBClusterBackup(DeleteXtraDBClusterBackupRequest) returns (DeleteXtraDBClusterBackupResponse);
+}
+
+message ListXtraDBClusterBackupsRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+}
+
+message ListXtraDBClusterBackupsResponse {
+  // Backup information.
+  message Backup {
+    // Cluster name.
+    string cluster_name = 1;
+    // Backup name.
+    string backup_name = 2;
+    // Backup state.
+    XtraDBBackupState state = 3;
+    // Start time.
+    google.protobuf.Timestamp start_time = 4;
+    // Finish time.
+    google.protobuf.Timestamp finish_time = 5;
+    // Currently running operation, if any.
+    RunningOperation operation = 6;
+  }
+  // Backups.
+  repeated Backup backups = 1;
+}
+
+message CreateXtraDBClusterBackupRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Cluster name.
+  string cluster_name = 2 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+  // Backup name.
+  string backup_name = 3 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+}
+
+message CreateXtraDBClusterBackupResponse {}
+
+message DeleteXtraDBClusterBackupRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Backup name.
+  string backup_name = 2 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+}
+
+message DeleteXtraDBClusterBackupResponse {}

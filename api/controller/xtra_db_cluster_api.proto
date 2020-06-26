@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+package percona.platform.dbaas.controller.v1beta1;
+
+option go_package = "controllerv1beta1";
+
+import "controller/common.proto";
+import "controller/xtra_db_cluster.proto";
+import "github.com/mwitkow/go-proto-validators/validator.proto";
+
+// XtraDBClusterAPI provides APIs for managing XtraDB clusters.
+service XtraDBClusterAPI {
+  // ListXtraDBClusters returns a list of XtraDB clusters.
+  rpc ListXtraDBClusters(ListXtraDBClustersRequest) returns (ListXtraDBClustersResponse);
+  // CreateXtraDBCluster creates a new XtraDB cluster.
+  rpc CreateXtraDBCluster(CreateXtraDBClusterRequest) returns (CreateXtraDBClusterResponse);
+  // UpdateXtraDBCluster updates existing XtraDB cluster.
+  rpc UpdateXtraDBCluster(UpdateXtraDBClusterRequest) returns (UpdateXtraDBClusterResponse);
+  // DeleteXtraDBCluster deletes XtraDB cluster.
+  rpc DeleteXtraDBCluster(DeleteXtraDBClusterRequest) returns (DeleteXtraDBClusterResponse);
+}
+
+message ListXtraDBClustersRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+}
+
+message ListXtraDBClustersResponse {
+  // Cluster represents database cluster information.
+  message Cluster {
+    // Cluster name.
+    string name = 1;
+    // Cluster state.
+    XtraDBClusterState state = 2;
+    // Currently running operation, if any.
+    RunningOperation operation = 3;
+    // Cluster parameters.
+    XtraDBClusterParams params = 4;
+  }
+  // XtraDB clusters information.
+  repeated Cluster clusters = 1;
+}
+
+message CreateXtraDBClusterRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Cluster name.
+  string name = 2 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+  // Cluster parameters.
+  XtraDBClusterParams params = 3;
+}
+
+message CreateXtraDBClusterResponse {}
+
+message UpdateXtraDBClusterRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Cluster name.
+  string name = 2 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+  // Cluster parameters.
+  XtraDBClusterParams params = 3;
+}
+
+message UpdateXtraDBClusterResponse {}
+
+message DeleteXtraDBClusterRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Cluster name.
+  string name = 2 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+}
+
+message DeleteXtraDBClusterResponse {}

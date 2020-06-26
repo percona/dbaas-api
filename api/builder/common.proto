@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package percona.platform.dbaas.builder.v1beta1;
+
+option go_package = "builderv1beta1";

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package percona.platform.dbaas.controller.v1beta1;
+
+option go_package = "controllerv1beta1";
+
+import "controller/common.proto";
+import "github.com/mwitkow/go-proto-validators/validator.proto";
+
+// XtraDBClusterRestoreAPI provides APIs for managing XtraDB clusters restores.
+service XtraDBClusterRestoreAPI {
+  // ListXtraDBClusterRestores returns a list of XtraDB clusters restores.
+  rpc ListXtraDBClusterRestores(ListXtraDBClusterRestoresRequest) returns (ListXtraDBClusterRestoresResponse);
+}
+
+message ListXtraDBClusterRestoresRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+}
+
+message ListXtraDBClusterRestoresResponse {}
