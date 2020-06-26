@@ -9,6 +9,10 @@ import (
 	_ "github.com/uber/prototool/cmd/prototool"
 	_ "google.golang.org/grpc"
 
+	// for clean GitHub action
+	_ "github.com/shurcooL/githubv4"
+	_ "golang.org/x/oauth2"
+
 	// other tools
 	_ "github.com/golangci/golangci-lint/cmd/golangci-lint"
 	_ "github.com/quasilyte/go-consistent"
