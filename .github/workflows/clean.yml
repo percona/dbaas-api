@@ -63,7 +63,7 @@ jobs:
 
       - name: Clean stale packages
         if: steps.collect.outputs.length > 0
-        uses: percona-platform/delete-package-versions@v1
+        uses: percona-platform/delete-package-versions@v1.0.1
         with:
           package-version-ids: ${{ steps.collect.outputs.stale_versions }}
 
