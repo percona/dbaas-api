@@ -4,6 +4,8 @@ package percona.platform.dbaas.controller.v1beta1;
 
 option go_package = "controllerv1beta1";
 
+import "github.com/mwitkow/go-proto-validators/validator.proto";
+
 // RunningOperation respresents a long-running operation.
 message RunningOperation {
   // Progress from 0.0 to 1.0; can decrease compared to the previous value.
@@ -15,7 +17,11 @@ message RunningOperation {
 // KubeAuth represents Kubernetes / kubectl authentication and authorization information.
 message KubeAuth {
   // Kubeconfig file content.
-  string kubeconfig = 1;
+  string kubeconfig = 1 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
 }
 
 // ComputeResources represents container computer resources requests or limits.

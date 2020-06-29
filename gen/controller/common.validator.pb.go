@@ -8,6 +8,8 @@ import (
 	math "math"
 
 	proto "github.com/golang/protobuf/proto"
+	_ "github.com/mwitkow/go-proto-validators"
+	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -19,6 +21,9 @@ func (this *RunningOperation) Validate() error {
 	return nil
 }
 func (this *KubeAuth) Validate() error {
+	if this.Kubeconfig == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Kubeconfig", fmt.Errorf(`value '%v' must not be an empty string`, this.Kubeconfig))
+	}
 	return nil
 }
 func (this *ComputeResources) Validate() error {
