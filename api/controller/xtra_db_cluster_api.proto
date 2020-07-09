@@ -30,7 +30,7 @@ message ListXtraDBClustersRequest {
 }
 
 message ListXtraDBClustersResponse {
-  // Cluster represents database cluster information.
+  // Cluster represents XtraDB cluster information.
   message Cluster {
     // Cluster name.
     string name = 1;

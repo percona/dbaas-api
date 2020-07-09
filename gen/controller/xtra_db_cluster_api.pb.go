@@ -106,7 +106,7 @@ func (m *ListXtraDBClustersResponse) GetClusters() []*ListXtraDBClustersResponse
 	return nil
 }
 
-// Cluster represents database cluster information.
+// Cluster represents XtraDB cluster information.
 type ListXtraDBClustersResponse_Cluster struct {
 	// Cluster name.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
