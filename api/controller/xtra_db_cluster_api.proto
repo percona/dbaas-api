@@ -30,7 +30,7 @@ message ListXtraDBClustersRequest {
 }
 
 message ListXtraDBClustersResponse {
-  // Cluster represents database cluster information.
+  // Cluster represents XtraDB cluster information.
   message Cluster {
     // Cluster name.
     string name = 1;
@@ -59,7 +59,11 @@ message CreateXtraDBClusterRequest {
     }
   ];
   // Cluster parameters.
-  XtraDBClusterParams params = 3;
+  XtraDBClusterParams params = 3 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
 }
 
 message CreateXtraDBClusterResponse {}
@@ -78,7 +82,11 @@ message UpdateXtraDBClusterRequest {
     }
   ];
   // Cluster parameters.
-  XtraDBClusterParams params = 3;
+  XtraDBClusterParams params = 3 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
 }
 
 message UpdateXtraDBClusterResponse {}

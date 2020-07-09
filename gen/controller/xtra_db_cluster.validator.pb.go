@@ -8,6 +8,7 @@ import (
 	math "math"
 
 	proto "github.com/golang/protobuf/proto"
+	_ "github.com/mwitkow/go-proto-validators"
 	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 )
 
@@ -17,10 +18,19 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 func (this *XtraDBClusterParams) Validate() error {
+	if !(this.ClusterSize > 0) {
+		return github_com_mwitkow_go_proto_validators.FieldError("ClusterSize", fmt.Errorf(`value '%v' must be greater than '0'`, this.ClusterSize))
+	}
+	if nil == this.Pxc {
+		return github_com_mwitkow_go_proto_validators.FieldError("Pxc", fmt.Errorf("message must exist"))
+	}
 	if this.Pxc != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Pxc); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Pxc", err)
 		}
+	}
+	if nil == this.Proxysql {
+		return github_com_mwitkow_go_proto_validators.FieldError("Proxysql", fmt.Errorf("message must exist"))
 	}
 	if this.Proxysql != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Proxysql); err != nil {
@@ -30,6 +40,9 @@ func (this *XtraDBClusterParams) Validate() error {
 	return nil
 }
 func (this *XtraDBClusterParams_PXC) Validate() error {
+	if nil == this.ComputeResources {
+		return github_com_mwitkow_go_proto_validators.FieldError("ComputeResources", fmt.Errorf("message must exist"))
+	}
 	if this.ComputeResources != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.ComputeResources); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("ComputeResources", err)
@@ -38,6 +51,9 @@ func (this *XtraDBClusterParams_PXC) Validate() error {
 	return nil
 }
 func (this *XtraDBClusterParams_ProxySQL) Validate() error {
+	if nil == this.ComputeResources {
+		return github_com_mwitkow_go_proto_validators.FieldError("ComputeResources", fmt.Errorf("message must exist"))
+	}
 	if this.ComputeResources != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.ComputeResources); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("ComputeResources", err)
