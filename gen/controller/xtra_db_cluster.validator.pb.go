@@ -18,8 +18,8 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 func (this *XtraDBClusterParams) Validate() error {
-	if !(this.Size_ > 0) {
-		return github_com_mwitkow_go_proto_validators.FieldError("Size_", fmt.Errorf(`value '%v' must be greater than '0'`, this.Size_))
+	if !(this.ClusterSize > 0) {
+		return github_com_mwitkow_go_proto_validators.FieldError("ClusterSize", fmt.Errorf(`value '%v' must be greater than '0'`, this.ClusterSize))
 	}
 	if nil == this.Pxc {
 		return github_com_mwitkow_go_proto_validators.FieldError("Pxc", fmt.Errorf("message must exist"))

@@ -52,7 +52,7 @@ message XtraDBClusterParams {
     ];
   }
   // Cluster size.
-  int32 size = 1 [
+  int32 cluster_size = 1 [
     (validator.field) = {
       int_gt: 0
     }
