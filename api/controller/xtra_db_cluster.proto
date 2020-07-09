@@ -5,6 +5,7 @@ package percona.platform.dbaas.controller.v1beta1;
 option go_package = "controllerv1beta1";
 
 import "controller/common.proto";
+import "github.com/mwitkow/go-proto-validators/validator.proto";
 
 // XtraDBClusterState represents XtraDB cluster CR state.
 enum XtraDBClusterState {
@@ -35,17 +36,37 @@ message XtraDBClusterParams {
   // PXC container parameters.
   message PXC {
     // Requested compute resources.
-    ComputeResources compute_resources = 1;
+    ComputeResources compute_resources = 1 [
+      (validator.field) = {
+        msg_exists: true
+      }
+    ];
   }
   // ProxySQL container parameters.
   message ProxySQL {
     // Requested compute resources.
-    ComputeResources compute_resources = 1;
+    ComputeResources compute_resources = 1 [
+      (validator.field) = {
+        msg_exists: true
+      }
+    ];
   }
   // Cluster size.
-  int32 size = 1;
+  int32 size = 1 [
+    (validator.field) = {
+      int_gt: 0
+    }
+  ];
   // PXC container parameters.
-  PXC pxc = 2;
+  PXC pxc = 2 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
   // ProxySQL container parameters.
-  ProxySQL proxysql = 3;
+  ProxySQL proxysql = 3 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
 }
