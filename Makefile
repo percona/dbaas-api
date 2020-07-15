@@ -24,10 +24,12 @@ gen:                                       ## Format, check, and generate using 
 	$(DOCKER_RUN_CMD) gofmt -w -s .
 	$(DOCKER_RUN_CMD) goimports -local github.com/percona-platform/dbaas-api -w .
 
-	go install -v ./...
-
 gen-dev: docker-build                      ## Same as `gen` but with DEV prototool Docker image
 	env DOCKER_RUN_IMAGE=$(DOCKER_DEV_IMAGE) make gen
+
+gen-code:                                  ## Generate code
+	go generate ./...
+	go install ./...
 
 descriptors:                               ## Update files used for breaking changes detection
 	$(DOCKER_RUN_CMD) prototool break descriptor-set api/controller -o api/controller/descriptor.bin

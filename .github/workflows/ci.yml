@@ -87,6 +87,9 @@ jobs:
           make gen-dev
           sudo chown -R runner:docker gen
 
+      - name: Generate Go code
+        run: make gen-code
+
       - name: Check that there are no source code changes
         run: |
           # Break job if any files were changed during its run (tools installation, etc), except go.sum.
