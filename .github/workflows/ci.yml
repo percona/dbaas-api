@@ -4,16 +4,18 @@ on:
   push:
     branches:
       - main
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+*
   pull_request:
 
 jobs:
   test:
     name: Test
-    timeout-minutes: 5
+    timeout-minutes: 10
 
     strategy:
       matrix:
-        go-version: [1.14.x]
+        go-version: [1.14.x, tip]
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
@@ -24,10 +26,29 @@ jobs:
       GOFLAGS: -v
 
     steps:
-      - name: Set up Go ${{ matrix.go-version }}
+      - name: Set up Go release
+        if: matrix.go-version != 'tip'
         uses: percona-platform/setup-go@v2.0.3
         with:
           go-version: ${{ matrix.go-version }}
+
+      - name: Set up Go tip
+        if: matrix.go-version == 'tip'
+        run: |
+          git clone --depth=1 https://go.googlesource.com/go $HOME/gotip
+          cd $HOME/gotip/src
+          ./make.bash
+          echo "::set-env name=GOROOT::$HOME/gotip"
+          echo "::add-path::$HOME/gotip/bin"
+
+      - name: Set GO_VERSION environment variable
+        env:
+          # to avoid "go version: flags can only be used with arguments" error
+          # because `go version` accepts -v flag since 1.15
+          GOFLAGS: ""
+        run: |
+          go version
+          echo "::set-env name=GO_VERSION::$(go version)"
 
       - name: Check out code into the Go module directory
         uses: percona-platform/checkout@v2.3.1
@@ -66,6 +87,9 @@ jobs:
           make gen-dev
           sudo chown -R runner:docker gen
 
+      - name: Generate Go code
+        run: make gen-code
+
       - name: Check that there are no source code changes
         run: |
           # Break job if any files were changed during its run (tools installation, etc), except go.sum.
@@ -80,6 +104,7 @@ jobs:
         if: ${{ failure() }}
         run: |
           env
+          go version
           go env
           pwd
           git status
@@ -161,6 +186,7 @@ jobs:
         if: ${{ failure() }}
         run: |
           env
+          go version
           go env
           pwd
           git status
@@ -207,6 +233,7 @@ jobs:
         if: ${{ failure() }}
         run: |
           env
+          go version
           go env
           pwd
           git status
