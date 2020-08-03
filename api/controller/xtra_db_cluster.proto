@@ -17,6 +17,8 @@ enum XtraDBClusterState {
   XTRA_DB_CLUSTER_STATE_READY = 2;
   // XTRA_DB_CLUSTER_STATE_FAILED represents a failed cluster (error).
   XTRA_DB_CLUSTER_STATE_FAILED = 3;
+  // XTRA_DB_CLUSTER_STATE_DELETING represents a cluster being deleting.
+  XTRA_DB_CLUSTER_STATE_DELETING = 4;
 }
 
 // XtraDBBackupState represents XtraDB backup CR state.
