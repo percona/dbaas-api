@@ -24,6 +24,8 @@ github.com/kisielk/errcheck v1.2.0/go.mod h1:/BMXB+zMLi60iA8Vv6Ksmxu/1UDYcXs4uQL
 github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+oQHNcck=
 github.com/mwitkow/go-proto-validators v0.3.0 h1:2WkInbIheqmDevK9h0S/K6f0Os/HlTPGJeRwDAeQE1w=
 github.com/mwitkow/go-proto-validators v0.3.0/go.mod h1:ej0Qp0qMgHN/KtDyUt+Q1/tA7a5VarXUOUxD+oeD30w=
+github.com/mwitkow/go-proto-validators v0.3.2 h1:qRlmpTzm2pstMKKzTdvwPCF5QfBNURSlAgN/R+qbKos=
+github.com/mwitkow/go-proto-validators v0.3.2/go.mod h1:ej0Qp0qMgHN/KtDyUt+Q1/tA7a5VarXUOUxD+oeD30w=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
