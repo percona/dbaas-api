@@ -14,10 +14,19 @@ jobs:
     timeout-minutes: 10
 
     strategy:
+      fail-fast: false
       matrix:
-        go-version: [1.14.x, tip]
+        go-version:
+          - 1.14.x
+          - 1.15.x
         os: [ubuntu-latest]
+        may-fail: [false]
+        include:
+          - go-version: tip
+            os: ubuntu-latest
+            may-fail: true
 
+    continue-on-error: ${{ matrix.may-fail }}
     runs-on: ${{ matrix.os }}
 
     env:
@@ -28,6 +37,9 @@ jobs:
     steps:
       - name: Set up Go release
         if: matrix.go-version != 'tip'
+        env:
+          # to avoid error due to `go version` accepting -v flag with an argument since 1.15
+          GOFLAGS: ""
         uses: percona-platform/setup-go@v2.1.1
         with:
           go-version: ${{ matrix.go-version }}
@@ -43,8 +55,7 @@ jobs:
 
       - name: Set GO_VERSION environment variable
         env:
-          # to avoid "go version: flags can only be used with arguments" error
-          # because `go version` accepts -v flag since 1.15
+          # to avoid error due to `go version` accepting -v flag with an argument since 1.15
           GOFLAGS: ""
         run: |
           go version
@@ -52,6 +63,8 @@ jobs:
 
       - name: Check out code into the Go module directory
         uses: percona-platform/checkout@v2.3.1
+        with:
+          lfs: true
 
       - name: Enable Go modules cache
         uses: percona-platform/cache@v2
@@ -81,6 +94,9 @@ jobs:
 
       - name: Install tools
         run: make init
+
+      - name: Initialize CI environment
+        run: make ci-init
 
       - name: Generate API code using dev docker image
         run: |
@@ -115,10 +131,14 @@ jobs:
     if: github.event_name == 'pull_request'
 
     strategy:
+      fail-fast: false
       matrix:
-        go-version: [1.14.x]
+        go-version:
+          - 1.14.x
         os: [ubuntu-latest]
+        may-fail: [false]
 
+    continue-on-error: ${{ matrix.may-fail }}
     runs-on: ${{ matrix.os }}
 
     env:
@@ -127,13 +147,35 @@ jobs:
       GOFLAGS: -v
 
     steps:
-      - name: Set up Go ${{ matrix.go-version }}
+      - name: Set up Go release
+        if: matrix.go-version != 'tip'
+        env:
+          # to avoid error due to `go version` accepting -v flag with an argument since 1.15
+          GOFLAGS: ""
         uses: percona-platform/setup-go@v2.1.1
         with:
           go-version: ${{ matrix.go-version }}
 
+      - name: Set up Go tip
+        if: matrix.go-version == 'tip'
+        run: |
+          git clone --depth=1 https://go.googlesource.com/go $HOME/gotip
+          cd $HOME/gotip/src
+          ./make.bash
+          echo "::set-env name=GOROOT::$HOME/gotip"
+          echo "::add-path::$HOME/gotip/bin"
+      - name: Set GO_VERSION environment variable
+        env:
+          # to avoid error due to `go version` accepting -v flag with an argument since 1.15
+          GOFLAGS: ""
+        run: |
+          go version
+          echo "::set-env name=GO_VERSION::$(go version)"
+
       - name: Check out code into the Go module directory
         uses: percona-platform/checkout@v2.3.1
+        with:
+          lfs: true
 
       - name: Enable Go modules cache
         uses: percona-platform/cache@v2
@@ -206,6 +248,8 @@ jobs:
     steps:
       - name: Check out code into the Go module directory
         uses: percona-platform/checkout@v2.3.1
+        with:
+          lfs: true
 
       - name: Enable experimental Docker features for --squash flag
         run: sudo .github/workflows/enable-docker-experimental.sh
