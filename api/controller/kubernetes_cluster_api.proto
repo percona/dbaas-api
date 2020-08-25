@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package percona.platform.dbaas.controller.v1beta1;
+
+option go_package = "controllerv1beta1";
+
+import "controller/common.proto";
+import "github.com/mwitkow/go-proto-validators/validator.proto";
+
+// KubernetesClusterAPI provides APIs for managing Kubernetes clusters.
+service KubernetesClusterAPI {
+  // CheckKubernetesClusterConnection checks connection to kubernetes clusters.
+  rpc CheckKubernetesClusterConnection (CheckKubernetesClusterConnectionRequest) returns (CheckKubernetesClusterConnectionResponse);
+}
+
+message CheckKubernetesClusterConnectionRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+}
+
+message CheckKubernetesClusterConnectionResponse {}
