@@ -15,5 +15,5 @@ require (
 	github.com/uber/prototool v1.10.0
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
 	golang.org/x/tools v0.0.0-20200710042808-f1c4188a97a1
-	google.golang.org/grpc v1.31.0
+	google.golang.org/grpc v1.31.1
 )
