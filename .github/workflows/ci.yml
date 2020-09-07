@@ -40,7 +40,7 @@ jobs:
         env:
           # to avoid error due to `go version` accepting -v flag with an argument since 1.15
           GOFLAGS: ""
-        uses: percona-platform/setup-go@v2.1.1
+        uses: percona-platform/setup-go@v2.1.2
         with:
           go-version: ${{ matrix.go-version }}
 
@@ -152,7 +152,7 @@ jobs:
         env:
           # to avoid error due to `go version` accepting -v flag with an argument since 1.15
           GOFLAGS: ""
-        uses: percona-platform/setup-go@v2.1.1
+        uses: percona-platform/setup-go@v2.1.2
         with:
           go-version: ${{ matrix.go-version }}
 
