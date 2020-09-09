@@ -4,11 +4,11 @@ RUN apt-get update
 RUN apt-get install -y aria2 unzip
 
 # must match version in prototool.yml file
-ENV PROTOBUF_VERSION=3.12.3
-ENV PROTOBUF_CHECKSUM=832fcfb109a75b1512051b9a61107d3e50d79b133d56894c20bb66a44b5d31d1a6f87e24e23d65f59eaaca28cca3efb8626b37a92d85788227d5ac0ca139f56f
+ENV PROTOBUF_VERSION=3.13.0
+ENV PROTOBUF_CHECKSUM=fbebe5e32db9edbb1bf7988af5fed471d22730104bc6ebd5066c5b4646a0949e49139382cae2605c7abc188ea53f73b044f688c264726009fc68cbbab6a98819
 
 # must match versions in tools/go.mod
-ENV GO_PROTO_VALIDATORS_VERSION=0.3.0
+ENV GO_PROTO_VALIDATORS_VERSION=0.3.2
 
 RUN mkdir /tmp/protoc
 RUN echo https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip
