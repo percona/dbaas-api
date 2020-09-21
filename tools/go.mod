@@ -12,7 +12,6 @@ require (
 	github.com/quasilyte/go-consistent v0.0.0-20200404105227-766526bf1e96
 	github.com/reviewdog/reviewdog v0.10.2
 	github.com/uber/prototool v1.10.0
-	golang.org/x/oauth2 v0.0.0-20200902213428-5d25da1a8d43 // indirect
 	golang.org/x/tools v0.0.0-20200908211811-12e1bf57a112
 	google.golang.org/grpc v1.32.0
 )
