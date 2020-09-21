@@ -1,13 +1,15 @@
 ---
-name: Cleanup
+name: Clean
 on:
   schedule:
     # run every day
     - cron: "0 0 * * *"
+  # FIXME remove
+  pull_request:
 
 jobs:
-  clean:
-    name: Clean stale packages and caches
+  clean-caches:
+    name: Clean caches
     timeout-minutes: 5
 
     strategy:
@@ -57,16 +59,24 @@ jobs:
             ${{ matrix.os }}-go-${{ matrix.go-version }}-build-${{ github.ref }}-
             ${{ matrix.os }}-go-${{ matrix.go-version }}-build-
 
+      - name: Clean Go modules cache
+        run: go clean -modcache
+
+  clean-packages:
+    name: Clean stale packages
+    timeout-minutes: 10
+
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Collect stale package versions
         env:
           ROBOT_TOKEN: ${{ secrets.ROBOT_TOKEN }}
-        uses: percona-platform/get-stale-packages-action@SAAS-255-Package-Get-Stale-Packages
+        uses: percona-platform/get-stale-packages-action@v1.0.0
 
       - name: Clean stale packages
         if: env.STALE_VERSIONS
-        uses: percona-platform/delete-package-versions@v1.0.2
+        uses: percona-platform/delete-package-versions@v1.0.3
         with:
           package-version-ids: ${{ env.STALE_VERSIONS }}
 
-      - name: Clean Go modules cache
-        run: go clean -modcache
