@@ -72,5 +72,3 @@ jobs:
 
       - name: Clean Go modules cache
         run: go clean -modcache
-
-
