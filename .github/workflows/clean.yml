@@ -75,21 +75,4 @@ jobs:
       - name: Clean Go modules cache
         run: go clean -modcache
 
-  clean-packages:
-    name: Clean stale packages
-    timeout-minutes: 10
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Collect stale package versions
-        env:
-          ROBOT_TOKEN: ${{ secrets.ROBOT_TOKEN }}
-        uses: percona-platform/get-stale-packages-action@v1.0.0
-
-      - name: Clean stale packages
-        if: env.STALE_VERSIONS
-        uses: percona-platform/delete-package-versions@v1.0.3
-        with:
-          package-version-ids: ${{ env.STALE_VERSIONS }}
 
