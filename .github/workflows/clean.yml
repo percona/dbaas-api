@@ -4,8 +4,6 @@ on:
   schedule:
     # run every day
     - cron: "0 0 * * *"
-  # FIXME remove
-  pull_request:
 
 jobs:
   clean-caches:
