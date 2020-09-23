@@ -19,7 +19,7 @@ init:                                      ## Install development tools
 ci-init:                ## Initialize CI environment
 	# nothing there yet
 
-gen:                                       ## Format, check, and generate using prototool Docker image
+gen:                                       ## Format, check, and generate code using prototool Docker image
 	# $(DOCKER_RUN_CMD) prototool break check api/controller -f api/controller/descriptor.bin
 
 	rm -rf gen
