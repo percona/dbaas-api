@@ -17,7 +17,7 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-func (this *KubernetesClusterCheckConnectionRequest) Validate() error {
+func (this *CheckKubernetesClusterConnectionRequest) Validate() error {
 	if nil == this.KubeAuth {
 		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
 	}
@@ -28,6 +28,6 @@ func (this *KubernetesClusterCheckConnectionRequest) Validate() error {
 	}
 	return nil
 }
-func (this *KubernetesClusterCheckConnectionResponse) Validate() error {
+func (this *CheckKubernetesClusterConnectionResponse) Validate() error {
 	return nil
 }
