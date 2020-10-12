@@ -49,7 +49,7 @@ jobs:
           echo "::add-path::$HOME/gotip/bin"
 
       - name: Check out code into the Go module directory
-        uses: percona-platform/checkout@v2.3.2
+        uses: percona-platform/checkout@v2.3.3
         with:
           lfs: true
 
