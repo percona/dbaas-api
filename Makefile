@@ -23,6 +23,7 @@ gen:                                       ## Format, check, and generate code u
 	# $(DOCKER_RUN_CMD) prototool break check api/controller -f api/controller/descriptor.bin
 
 	rm -rf gen
+	docker pull $(DOCKER_RUN_IMAGE)
 	$(DOCKER_RUN_CMD) prototool all api
 	$(DOCKER_RUN_CMD) gofmt -w -s .
 	$(DOCKER_RUN_CMD) goimports -local github.com/percona-platform/dbaas-api -w .
