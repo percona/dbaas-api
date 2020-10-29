@@ -14,5 +14,5 @@ require (
 	github.com/uber/prototool v1.10.0
 	golang.org/x/tools v0.0.0-20201013201025-64a9e34f3752
 	google.golang.org/grpc v1.32.0
-	google.golang.org/protobuf v1.24.0
+	google.golang.org/protobuf v1.25.0
 )
