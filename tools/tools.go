@@ -8,6 +8,7 @@ import (
 	_ "github.com/mwitkow/go-proto-validators/protoc-gen-govalidators"
 	_ "github.com/uber/prototool/cmd/prototool"
 	_ "google.golang.org/grpc"
+	_ "google.golang.org/protobuf/cmd/protoc-gen-go"
 
 	// other tools
 	_ "github.com/golangci/golangci-lint/cmd/golangci-lint"
