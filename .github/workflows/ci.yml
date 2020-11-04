@@ -50,8 +50,8 @@ jobs:
           git clone --depth=1 https://go.googlesource.com/go $HOME/gotip
           cd $HOME/gotip/src
           ./make.bash
-          echo "::set-env name=GOROOT::$HOME/gotip"
-          echo "::add-path::$HOME/gotip/bin"
+          echo "GOROOT=$HOME/gotip" >> $GITHUB_ENV
+          echo "$HOME/gotip/bin" >> $GITHUB_PATH
 
       - name: Set GO_VERSION environment variable
         env:
@@ -59,7 +59,7 @@ jobs:
           GOFLAGS: ""
         run: |
           go version
-          echo "::set-env name=GO_VERSION::$(go version)"
+          echo "GO_VERSION=$(go version)" >> $GITHUB_ENV
 
       - name: Check out code into the Go module directory
         uses: percona-platform/checkout@v2
@@ -162,15 +162,15 @@ jobs:
           git clone --depth=1 https://go.googlesource.com/go $HOME/gotip
           cd $HOME/gotip/src
           ./make.bash
-          echo "::set-env name=GOROOT::$HOME/gotip"
-          echo "::add-path::$HOME/gotip/bin"
+          echo "GOROOT=$HOME/gotip" >> $GITHUB_ENV
+          echo "$HOME/gotip/bin" >> $GITHUB_PATH
       - name: Set GO_VERSION environment variable
         env:
           # to avoid error due to `go version` accepting -v flag with an argument since 1.15
           GOFLAGS: ""
         run: |
           go version
-          echo "::set-env name=GO_VERSION::$(go version)"
+          echo "GO_VERSION=$(go version)" >> $GITHUB_ENV
 
       - name: Check out code into the Go module directory
         uses: percona-platform/checkout@v2
