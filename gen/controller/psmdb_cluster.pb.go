@@ -94,11 +94,11 @@ type PSMDBBackupState int32
 const (
 	// PSMDB_BACKUP_STATE_INVALID represents unknown state.
 	PSMDBBackupState_PSMDB_BACKUP_STATE_INVALID PSMDBBackupState = 0
-	// PSMDB_BACKUP_STATE_RUNNING represents running backup (Starting, Running).
+	// PSMDB_BACKUP_STATE_RUNNING represents running backup (waiting, requested, running, FIXME check it).
 	PSMDBBackupState_PSMDB_BACKUP_STATE_RUNNING PSMDBBackupState = 1
-	// PSMDB_BACKUP_STATE_SUCCEEDED represents succeeded backup (Succeeded).
+	// PSMDB_BACKUP_STATE_SUCCEEDED represents succeeded backup (ready, FIXME check it).
 	PSMDBBackupState_PSMDB_BACKUP_STATE_SUCCEEDED PSMDBBackupState = 2
-	// PSMDB_BACKUP_STATE_FAILED represents failed backup (Failed).
+	// PSMDB_BACKUP_STATE_FAILED represents failed backup (rejected, error, FIXME check it).
 	PSMDBBackupState_PSMDB_BACKUP_STATE_FAILED PSMDBBackupState = 3
 )
 
