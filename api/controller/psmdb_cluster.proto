@@ -25,13 +25,15 @@ enum PSMDBClusterState {
 enum PSMDBBackupState {
   // PSMDB_BACKUP_STATE_INVALID represents unknown state.
   PSMDB_BACKUP_STATE_INVALID = 0;
-  // PSMDB_BACKUP_STATE_RUNNING represents running backup (Starting, Running).
+  // PSMDB_BACKUP_STATE_RUNNING represents running backup (waiting, requested, running, FIXME check it).
   PSMDB_BACKUP_STATE_RUNNING = 1;
-  // PSMDB_BACKUP_STATE_SUCCEEDED represents succeeded backup (Succeeded).
+  // PSMDB_BACKUP_STATE_SUCCEEDED represents succeeded backup (ready, FIXME check it).
   PSMDB_BACKUP_STATE_SUCCEEDED = 2;
-  // PSMDB_BACKUP_STATE_FAILED represents failed backup (Failed).
+  // PSMDB_BACKUP_STATE_FAILED represents failed backup (rejected, error, FIXME check it).
   PSMDB_BACKUP_STATE_FAILED = 3;
 }
+
+// TODO PSMDBRestoreState
 
 // PSMDBClusterParams represents PSMDB cluster parameters that can be updated.
 message PSMDBClusterParams {

@@ -25,13 +25,15 @@ enum XtraDBClusterState {
 enum XtraDBBackupState {
   // XTRA_DB_BACKUP_STATE_INVALID represents unknown state.
   XTRA_DB_BACKUP_STATE_INVALID = 0;
-  // XTRA_DB_BACKUP_STATE_RUNNING represents running backup (Starting, Running).
+  // XTRA_DB_BACKUP_STATE_RUNNING represents running backup (Starting, Running, FIXME check it).
   XTRA_DB_BACKUP_STATE_RUNNING = 1;
-  // XTRA_DB_BACKUP_STATE_SUCCEEDED represents succeeded backup (Succeeded).
+  // XTRA_DB_BACKUP_STATE_SUCCEEDED represents succeeded backup (Succeeded, FIXME check it).
   XTRA_DB_BACKUP_STATE_SUCCEEDED = 2;
-  // XTRA_DB_BACKUP_STATE_FAILED represents failed backup (Failed).
+  // XTRA_DB_BACKUP_STATE_FAILED represents failed backup (Failed, FIXME check it).
   XTRA_DB_BACKUP_STATE_FAILED = 3;
 }
+
+// TODO XtraDBRestoreState
 
 // XtraDBClusterParams represents XtraDB cluster parameters that can be updated.
 message XtraDBClusterParams {

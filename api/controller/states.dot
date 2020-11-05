@@ -30,4 +30,10 @@ subgraph BackupState {
   BACKUP_STATE_RUNNING -> BACKUP_STATE_FAILED;
 }
 
+subgraph RestoreState {
+  node [style=filled];
+
+  // TODO
+}
+
 }
