@@ -1,4 +1,4 @@
-FROM golang:1.14
+FROM golang:1.15.3
 
 RUN apt-get update
 RUN apt-get install -y aria2 unzip
