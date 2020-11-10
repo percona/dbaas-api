@@ -41,3 +41,4 @@ RUN protoc --version
 RUN prototool version
 
 WORKDIR /work
+LABEL org.opencontainers.image.source https://github.com/percona-platform/dbaas-api

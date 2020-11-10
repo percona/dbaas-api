@@ -1,5 +1,7 @@
 DOCKER_DEV_IMAGE  = percona-platform-dbaas-prototool:dev
-DOCKER_RUN_IMAGE ?= docker.pkg.github.com/percona-platform/dbaas-api/dbaas-prototool:latest
+DOCKER_PACKAGE    = docker.pkg.github.com/percona-platform/dbaas-api/dbaas-prototool:latest
+DOCKER_CONTAINER  = ghcr.io/percona-platform/dbaas-prototool:latest
+DOCKER_RUN_IMAGE ?= $(DOCKER_CONTAINER)
 DOCKER_RUN_CMD    = docker run --rm --mount='type=bind,src=$(PWD),dst=/work' $(DOCKER_RUN_IMAGE)
 
 default: help
@@ -41,9 +43,11 @@ descriptors:                               ## Update files used for breaking cha
 docker-build:                              ## Build prototool Docker dev image
 	docker build --pull --squash --tag $(DOCKER_DEV_IMAGE) -f Dockerfile .
 
-docker-push:                               ## Tag and push prototool Docker image
-	docker tag $(DOCKER_DEV_IMAGE) $(DOCKER_RUN_IMAGE)
-	docker push $(DOCKER_RUN_IMAGE)
+docker-push:                               ## Tag and push prototool Docker images
+	docker tag $(DOCKER_DEV_IMAGE) $(DOCKER_PACKAGE)
+	docker tag $(DOCKER_DEV_IMAGE) $(DOCKER_CONTAINER)
+	docker push $(DOCKER_PACKAGE)
+	docker push $(DOCKER_CONTAINER)
 
 run-dev:                                   ## Run bash in prototool Docker dev image
 	# the same as DOCKER_RUN_CMD but with `-it` and dev image
