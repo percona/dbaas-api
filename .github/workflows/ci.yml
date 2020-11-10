@@ -86,9 +86,6 @@ jobs:
       - name: Enable experimental Docker features for --squash flag
         run: sudo .github/workflows/enable-docker-experimental.sh
 
-      - name: Login in Docker registry
-        run: docker login -u $GITHUB_ACTOR -p ${{ secrets.GITHUB_TOKEN }} docker.pkg.github.com
-
       - name: Download Go modules
         run: go mod download
 
@@ -254,13 +251,15 @@ jobs:
       - name: Enable experimental Docker features for --squash flag
         run: sudo .github/workflows/enable-docker-experimental.sh
 
-      - name: Login in Docker registry
-        run: docker login -u $GITHUB_ACTOR -p ${{ secrets.GITHUB_TOKEN }} docker.pkg.github.com
+      - name: Login in Docker registries
+        run: |
+          docker login -u $GITHUB_ACTOR -p ${{ secrets.GITHUB_TOKEN }} docker.pkg.github.com
+          docker login -u $GITHUB_ACTOR -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
 
       - name: Build Docker image
         run: make docker-build
 
-      - name: Tag and push Docker image
+      - name: Tag and push Docker images
         run: make docker-push
 
       - name: Check that there are no source code changes
