@@ -13,6 +13,6 @@ require (
 	github.com/reviewdog/reviewdog v0.11.0
 	github.com/uber/prototool v1.10.0
 	golang.org/x/tools v0.0.0-20201017001424-6003fad69a88
-	google.golang.org/grpc v1.33.1
+	google.golang.org/grpc v1.33.2
 	google.golang.org/protobuf v1.25.0
 )
