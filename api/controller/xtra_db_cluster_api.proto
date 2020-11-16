@@ -87,6 +87,30 @@ message UpdateXtraDBClusterRequest {
       msg_exists: true
     }
   ];
+  // PXC container parameters.
+  message PXC {
+    // Requested compute resources.
+    ComputeResources compute_resources = 4 [
+      (validator.field) = {
+        msg_exists: true
+      }
+    ];
+  }
+  // ProxySQL container parameters.
+  message ProxySQL {
+    // Requested compute resources.
+    ComputeResources compute_resources = 5 [
+      (validator.field) = {
+        msg_exists: true
+      }
+    ];
+  }
+  // Cluster size.
+  int32 cluster_size = 6 [
+    (validator.field) = {
+      int_gt: 0
+    }
+  ];
 }
 
 message UpdateXtraDBClusterResponse {}

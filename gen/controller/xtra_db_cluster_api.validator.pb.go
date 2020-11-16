@@ -96,6 +96,31 @@ func (this *UpdateXtraDBClusterRequest) Validate() error {
 			return github_com_mwitkow_go_proto_validators.FieldError("Params", err)
 		}
 	}
+	if !(this.ClusterSize > 0) {
+		return github_com_mwitkow_go_proto_validators.FieldError("ClusterSize", fmt.Errorf(`value '%v' must be greater than '0'`, this.ClusterSize))
+	}
+	return nil
+}
+func (this *UpdateXtraDBClusterRequest_PXC) Validate() error {
+	if nil == this.ComputeResources {
+		return github_com_mwitkow_go_proto_validators.FieldError("ComputeResources", fmt.Errorf("message must exist"))
+	}
+	if this.ComputeResources != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.ComputeResources); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("ComputeResources", err)
+		}
+	}
+	return nil
+}
+func (this *UpdateXtraDBClusterRequest_ProxySQL) Validate() error {
+	if nil == this.ComputeResources {
+		return github_com_mwitkow_go_proto_validators.FieldError("ComputeResources", fmt.Errorf("message must exist"))
+	}
+	if this.ComputeResources != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.ComputeResources); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("ComputeResources", err)
+		}
+	}
 	return nil
 }
 func (this *UpdateXtraDBClusterResponse) Validate() error {
