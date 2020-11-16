@@ -81,16 +81,10 @@ message UpdateXtraDBClusterRequest {
       string_not_empty: true
     }
   ];
-  // Cluster parameters.
-  XtraDBClusterParams params = 3 [
-    (validator.field) = {
-      msg_exists: true
-    }
-  ];
   // PXC container parameters.
   message PXC {
     // Requested compute resources.
-    ComputeResources compute_resources = 4 [
+    ComputeResources compute_resources = 1 [
       (validator.field) = {
         msg_exists: true
       }
@@ -99,16 +93,28 @@ message UpdateXtraDBClusterRequest {
   // ProxySQL container parameters.
   message ProxySQL {
     // Requested compute resources.
-    ComputeResources compute_resources = 5 [
+    ComputeResources compute_resources = 1 [
       (validator.field) = {
         msg_exists: true
       }
     ];
   }
   // Cluster size.
-  int32 cluster_size = 6 [
+  int32 cluster_size = 3 [
     (validator.field) = {
       int_gt: 0
+    }
+  ];
+  // PXC container parameters.
+  PXC pxc = 4 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // ProxySQL container parameters.
+  ProxySQL proxysql = 5 [
+    (validator.field) = {
+      msg_exists: true
     }
   ];
 }
