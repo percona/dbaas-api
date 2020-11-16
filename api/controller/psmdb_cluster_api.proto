@@ -81,8 +81,19 @@ message UpdatePSMDBClusterRequest {
       string_not_empty: true
     }
   ];
-  // Cluster parameters.
-  PSMDBClusterParams params = 3 [
+  // ReplicaSet container parameters.
+  message ReplicaSet {
+    // Requested compute resources.
+    ComputeResources compute_resources = 3;
+  }
+  // Cluster size.
+  int32 cluster_size = 4 [
+    (validator.field) = {
+      int_gt: 0
+    }
+  ];
+  // Replicaset container parameters.
+  ReplicaSet replicaset = 5 [
     (validator.field) = {
       msg_exists: true
     }
