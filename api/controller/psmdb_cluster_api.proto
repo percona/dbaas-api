@@ -92,12 +92,6 @@ message UpdatePSMDBClusterRequest {
       int_gt: 0
     }
   ];
-  // Replicaset container parameters.
-  ReplicaSet replicaset = 5 [
-    (validator.field) = {
-      msg_exists: true
-    }
-  ];
 }
 
 message UpdatePSMDBClusterResponse {}

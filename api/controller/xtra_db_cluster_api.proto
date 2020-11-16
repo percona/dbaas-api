@@ -111,18 +111,6 @@ message UpdateXtraDBClusterRequest {
       int_gt: 0
     }
   ];
-  // PXC container parameters.
-  PXC pxc = 7 [
-    (validator.field) = {
-      msg_exists: true
-    }
-  ];
-  // ProxySQL container parameters.
-  ProxySQL proxysql = 8 [
-    (validator.field) = {
-      msg_exists: true
-    }
-  ];
 }
 
 message UpdateXtraDBClusterResponse {}
