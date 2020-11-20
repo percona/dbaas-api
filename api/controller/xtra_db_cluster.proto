@@ -45,6 +45,12 @@ message XtraDBClusterParams {
         msg_exists: true
       }
     ];
+    // Disk size in bytes.
+    int64 disk_size = 2 [
+      (validator.field) = {
+        int_gt: 0
+      }
+    ];
   }
   // ProxySQL container parameters.
   message ProxySQL {
@@ -52,6 +58,12 @@ message XtraDBClusterParams {
     ComputeResources compute_resources = 1 [
       (validator.field) = {
         msg_exists: true
+      }
+    ];
+    // Disk size in bytes.
+    int64 disk_size = 2 [
+      (validator.field) = {
+        int_gt: 0
       }
     ];
   }
