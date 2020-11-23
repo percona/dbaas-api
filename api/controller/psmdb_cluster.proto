@@ -60,4 +60,11 @@ message PSMDBClusterParams {
       msg_exists: true
     }
   ];
+  // Expose ports to the world.
+  bool expose = 3;
+  // Expose Type: ClusterIP, NodePort, LoadBalancer.
+  // See https://www.percona.com/doc/kubernetes-operator-for-psmongodb/expose.html.
+  string expose_type = 4;
+  // Port number to expose.
+  int32 expose_port = 5;
 }
