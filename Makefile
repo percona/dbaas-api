@@ -2,7 +2,7 @@ DOCKER_DEV_IMAGE  = percona-platform-dbaas-prototool:dev
 DOCKER_PACKAGE    = docker.pkg.github.com/percona-platform/dbaas-api/dbaas-prototool:latest
 DOCKER_CONTAINER  = ghcr.io/percona-platform/dbaas-prototool:latest
 DOCKER_RUN_IMAGE ?= $(DOCKER_CONTAINER)
-DOCKER_RUN_CMD    = docker run --rm --mount='type=bind,src=$(PWD),dst=/work' $(DOCKER_RUN_IMAGE)
+DOCKER_RUN_CMD    = docker run --rm --user $(shell id -u) --mount='type=bind,src=$(PWD),dst=/work' $(DOCKER_RUN_IMAGE)
 
 default: help
 

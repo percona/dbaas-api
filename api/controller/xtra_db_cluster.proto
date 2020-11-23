@@ -66,6 +66,8 @@ message XtraDBClusterParams {
         int_gt: 0
       }
     ];
+    // Service type (to expose the servie).
+    string service_type = 3;
   }
   // Cluster size.
   int32 cluster_size = 1 [
