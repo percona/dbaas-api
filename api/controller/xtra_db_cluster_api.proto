@@ -66,8 +66,8 @@ message CreateXtraDBClusterRequest {
       msg_exists: true
     }
   ];
-  // PMM server public address URL.
-  string pmm_public_address_url = 4 [
+  // PMM server public address.
+  string pmm_public_address = 4 [
     (validator.field) = {
       string_not_empty: true
     }
