@@ -18,6 +18,8 @@ service XtraDBClusterAPI {
   rpc UpdateXtraDBCluster(UpdateXtraDBClusterRequest) returns (UpdateXtraDBClusterResponse);
   // DeleteXtraDBCluster deletes XtraDB cluster.
   rpc DeleteXtraDBCluster(DeleteXtraDBClusterRequest) returns (DeleteXtraDBClusterResponse);
+  // RestartXtraDBCluster restarts XtraDB cluster.
+  rpc RestartXtraDBCluster(RestartXtraDBClusterRequest) returns (RestartXtraDBClusterResponse);
 }
 
 message ListXtraDBClustersRequest {
@@ -113,3 +115,20 @@ message DeleteXtraDBClusterRequest {
 }
 
 message DeleteXtraDBClusterResponse {}
+
+message RestartXtraDBClusterRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Cluster name.
+  string name = 2 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+}
+
+message RestartXtraDBClusterResponse {}
