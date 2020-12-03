@@ -102,6 +102,10 @@ message UpdatePSMDBClusterRequest {
         msg_exists: true
       }
     ];
+    // Suspend cluster `pause: true`.
+    bool suspend = 3;
+    // Resume cluster `pause: false`.
+    bool resume = 4;
   }
   // Cluster parameters.
   UpdatePSMDBClusterParams params = 3 [
