@@ -90,12 +90,10 @@ message UpdatePSMDBClusterRequest {
       // Requested compute resources.
       ComputeResources compute_resources = 1;
     }
+    // Update cluster size.
+    bool update_cluster_size = 5;
     // Cluster size.
-    int32 cluster_size = 1 [
-      (validator.field) = {
-        int_gt: 0
-      }
-    ];
+    int32 cluster_size = 1;
     // Replicaset container parameters.
     ReplicaSet replicaset = 2 [
       (validator.field) = {
