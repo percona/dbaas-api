@@ -85,8 +85,6 @@ message XtraDBClusterParams {
       msg_exists: true
     }
   ];
-  // Hostname for external connections.
-  string hostname = 4;
 }
 
 // XtraDBCredentials is cluster connection credentials.
