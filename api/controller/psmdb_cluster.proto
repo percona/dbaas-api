@@ -61,5 +61,5 @@ message PSMDBClusterParams {
     }
   ];
   // Hostname for external connections.
-  string hostname = 4;
+  string hostname = 3;
 }
