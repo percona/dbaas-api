@@ -60,6 +60,18 @@ message PSMDBClusterParams {
       msg_exists: true
     }
   ];
-  // Hostname for external connections.
-  string hostname = 3;
+}
+
+// PSMDBCredentials Represents the credentials needed to connect to the cluster.
+message PSMDBCredentials {
+  // MongoDB username.
+  string username = 1;
+  // MongoDB password.
+  string password = 2;
+  // MongoDB host.
+  string host = 3;
+  // MongoDB port.
+  int32 port = 4;
+  // Replicaset name.
+  string replicaset = 5;
 }

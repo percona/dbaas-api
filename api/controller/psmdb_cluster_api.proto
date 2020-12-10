@@ -20,6 +20,8 @@ service PSMDBClusterAPI {
   rpc DeletePSMDBCluster(DeletePSMDBClusterRequest) returns (DeletePSMDBClusterResponse);
   // RestartPSMDBCluster restarts PSMDB cluster.
   rpc RestartPSMDBCluster(RestartPSMDBClusterRequest) returns (RestartPSMDBClusterResponse);
+  // GetPSMDBCluster gets a cluster's connection credentials.
+  rpc GetPSMDBCluster(GetPSMDBClusterRequest) returns (GetPSMDBClusterResponse);
 }
 
 message ListPSMDBClustersRequest {
@@ -146,3 +148,23 @@ message RestartPSMDBClusterRequest {
 }
 
 message RestartPSMDBClusterResponse {}
+
+message GetPSMDBClusterRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Cluster name.
+  string name = 2 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+}
+
+message GetPSMDBClusterResponse {
+  // Cluster hostname and credentials.
+  PSMDBCredentials credentials = 1;
+}
