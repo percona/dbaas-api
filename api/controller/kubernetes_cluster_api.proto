@@ -25,7 +25,7 @@ message CheckKubernetesClusterConnectionRequest {
 
 message CheckKubernetesClusterConnectionResponse {
   // Installed operators.
-  Operators operators = 2;
+  Operators operators = 1;
   // Status of Kubernetes cluster.
-  KubernetesClusterStatus status = 3;
+  KubernetesClusterStatus status = 2;
 }
