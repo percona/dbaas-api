@@ -60,4 +60,6 @@ message PSMDBClusterParams {
       msg_exists: true
     }
   ];
+  // Paused is true when cluster is suspended.
+  bool paused = 3;
 }
