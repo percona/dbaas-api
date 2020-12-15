@@ -67,11 +67,7 @@ message CreatePSMDBClusterRequest {
     }
   ];
   // PMM server public address.
-  string pmm_public_address = 4 [
-    (validator.field) = {
-      string_not_empty: true
-    }
-  ];
+  string pmm_public_address = 4;
 }
 
 message CreatePSMDBClusterResponse {}
