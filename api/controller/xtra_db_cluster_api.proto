@@ -66,8 +66,7 @@ message CreateXtraDBClusterRequest {
       msg_exists: true
     }
   ];
-  // PMM server public address.
-  // TODO: https://jira.percona.com/browse/PMM-7132
+  // PMM server public address. If empty do not turn on monitoring.
   string pmm_public_address = 4;
 }
 
@@ -91,39 +90,23 @@ message UpdateXtraDBClusterRequest {
     // PXC container parameters.
     message PXC {
       // Requested compute resources.
-      ComputeResources compute_resources = 1 [
-        (validator.field) = {
-          msg_exists: true
-        }
-      ];
+      ComputeResources compute_resources = 1;
     }
     // ProxySQL container parameters.
     message ProxySQL {
       // Requested compute resources.
-      ComputeResources compute_resources = 1 [
-        (validator.field) = {
-          msg_exists: true
-        }
-      ];
+      ComputeResources compute_resources = 1;
     }
     // Cluster size.
-    int32 cluster_size = 1 [
-      (validator.field) = {
-        int_gt: 0
-      }
-    ];
+    int32 cluster_size = 1;
     // PXC container parameters.
-    PXC pxc = 2 [
-      (validator.field) = {
-        msg_exists: true
-      }
-    ];
+    PXC pxc = 2;
     // ProxySQL container parameters.
-    ProxySQL proxysql = 3 [
-      (validator.field) = {
-        msg_exists: true
-      }
-    ];
+    ProxySQL proxysql = 3;
+    // Suspend cluster `pause: true`.
+    bool suspend = 5;
+    // Resume cluster `pause: false`.
+    bool resume = 6;
   }
   // Cluster parameters.
   UpdateXtraDBClusterParams params = 3 [

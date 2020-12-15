@@ -67,7 +67,6 @@ message CreatePSMDBClusterRequest {
     }
   ];
   // PMM server public address.
-  // TODO: https://jira.percona.com/browse/PMM-7132
   string pmm_public_address = 4;
 }
 
