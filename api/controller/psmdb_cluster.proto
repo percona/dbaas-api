@@ -60,6 +60,8 @@ message PSMDBClusterParams {
       msg_exists: true
     }
   ];
+  // Paused is true when cluster is suspended.
+  bool paused = 3;
 }
 
 // PSMDBCredentials Represents the credentials needed to connect to the cluster.

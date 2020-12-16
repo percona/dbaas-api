@@ -85,6 +85,8 @@ message XtraDBClusterParams {
       msg_exists: true
     }
   ];
+  // Paused is true when cluster is suspended.
+  bool paused = 4;
 }
 
 // XtraDBCredentials is cluster connection credentials.
