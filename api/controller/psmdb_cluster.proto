@@ -64,14 +64,14 @@ message PSMDBClusterParams {
 
 // PSMDBCredentials Represents the credentials needed to connect to the cluster.
 message PSMDBCredentials {
-  // MongoDB username.
-  string username = 1;
-  // MongoDB password.
-  string password = 2;
   // MongoDB host.
-  string host = 3;
+  string host = 1;
   // MongoDB port.
-  int32 port = 4;
+  int32 port = 2;
+  // MongoDB username.
+  string username = 3;
+  // MongoDB password.
+  string password = 4;
   // Replicaset name.
   string replicaset = 5;
 }
