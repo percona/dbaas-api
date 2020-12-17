@@ -41,7 +41,7 @@ const (
 	PSMDBClusterState_PSMDB_CLUSTER_STATE_FAILED PSMDBClusterState = 3
 	// PSMDB_CLUSTER_STATE_DELETING represents a cluster being deleting.
 	PSMDBClusterState_PSMDB_CLUSTER_STATE_DELETING PSMDBClusterState = 4
-	// PSMDB_CLUSTER_STATE_PAUSED represents a cluster is paused.
+	// PSMDB_CLUSTER_STATE_PAUSED represents a paused cluster state.
 	PSMDBClusterState_PSMDB_CLUSTER_STATE_PAUSED PSMDBClusterState = 5
 )
 

@@ -41,7 +41,7 @@ const (
 	XtraDBClusterState_XTRA_DB_CLUSTER_STATE_FAILED XtraDBClusterState = 3
 	// XTRA_DB_CLUSTER_STATE_DELETING represents a cluster being deleting.
 	XtraDBClusterState_XTRA_DB_CLUSTER_STATE_DELETING XtraDBClusterState = 4
-	// XTRA_DB_CLUSTER_STATE_PAUSED represents a cluster is paused.
+	// XTRA_DB_CLUSTER_STATE_PAUSED represents a paused cluster state.
 	XtraDBClusterState_XTRA_DB_CLUSTER_STATE_PAUSED XtraDBClusterState = 5
 )
 
