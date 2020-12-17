@@ -88,5 +88,5 @@ message XtraDBClusterParams {
     }
   ];
   // Paused is true when cluster is suspended.
-  bool paused = 4;
+  bool paused = 4 [deprecated = true];
 }

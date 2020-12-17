@@ -63,5 +63,5 @@ message PSMDBClusterParams {
     }
   ];
   // Paused is true when cluster is suspended.
-  bool paused = 3;
+  bool paused = 3 [deprecated = true];
 }
