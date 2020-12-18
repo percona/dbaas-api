@@ -90,8 +90,6 @@ message CreatePSMDBClusterRequest {
   ];
   // PMM server public address.
   string pmm_public_address = 4;
-  // Expose enables cluster exposing via ingress.
-  bool expose = 5;
 }
 
 message CreatePSMDBClusterResponse {}
