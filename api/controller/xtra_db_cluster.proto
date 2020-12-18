@@ -19,6 +19,8 @@ enum XtraDBClusterState {
   XTRA_DB_CLUSTER_STATE_FAILED = 3;
   // XTRA_DB_CLUSTER_STATE_DELETING represents a cluster being deleting.
   XTRA_DB_CLUSTER_STATE_DELETING = 4;
+  // XTRA_DB_CLUSTER_STATE_PAUSED represents a paused cluster state.
+  XTRA_DB_CLUSTER_STATE_PAUSED = 5;
 }
 
 // XtraDBBackupState represents XtraDB backup CR state.
@@ -85,6 +87,4 @@ message XtraDBClusterParams {
       msg_exists: true
     }
   ];
-  // Paused is true when cluster is suspended.
-  bool paused = 4;
 }
