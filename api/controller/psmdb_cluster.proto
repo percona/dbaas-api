@@ -19,6 +19,8 @@ enum PSMDBClusterState {
   PSMDB_CLUSTER_STATE_FAILED = 3;
   // PSMDB_CLUSTER_STATE_DELETING represents a cluster being deleting.
   PSMDB_CLUSTER_STATE_DELETING = 4;
+  // PSMDB_CLUSTER_STATE_PAUSED represents a paused cluster state.
+  PSMDB_CLUSTER_STATE_PAUSED = 5;
 }
 
 // PSMDBBackupState represents PSMDB backup CR state.
