@@ -1,6 +1,6 @@
 module github.com/percona-platform/dbaas-api/tools
 
-go 1.14
+go 1.15
 
 // some dependecies should be synced with Dockerfile
 
