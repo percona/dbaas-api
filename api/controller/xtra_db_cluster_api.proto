@@ -67,6 +67,8 @@ message GetXtraDBClusterRequest {
 message GetXtraDBClusterResponse {
   // Connection hostname and credentials.
   XtraDBCredentials credentials = 1;
+  // Cluster state.
+  XtraDBClusterState state = 2;
 }
 
 message CreateXtraDBClusterRequest {

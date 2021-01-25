@@ -67,6 +67,8 @@ message GetPSMDBClusterRequest {
 message GetPSMDBClusterResponse {
   // Cluster hostname and credentials.
   PSMDBCredentials credentials = 1;
+  // Cluster state.
+  PSMDBClusterState state = 2;
 }
 
 message CreatePSMDBClusterRequest {
