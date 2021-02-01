@@ -4,12 +4,13 @@ package percona.platform.dbaas.controller.v1beta1;
 
 option go_package = "controller;controllerv1beta1";
 
-// Log contains log for certain pod's container.
-message Log {
+// Logs contain logs for certain pod's container. If container is an empty
+// string, logs contain pod's events.
+message Logs {
   // Pod name.
   string pod = 1;
   // Container name.
   string container = 2;
-  // Content of container's log.
-  string log = 3;
+  // Content of container's log or pod's events.
+  repeated string logs = 3;
 }
