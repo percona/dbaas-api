@@ -88,3 +88,15 @@ message XtraDBClusterParams {
     }
   ];
 }
+
+// XtraDBCredentials is cluster connection credentials.
+message XtraDBCredentials {
+  // ProxySQL host.
+  string host = 1;
+  // ProxySQL port.
+  int32 port = 2;
+  // ProxySQL username.
+  string username = 3;
+  // ProxySQL password.
+  string password = 4;
+}
