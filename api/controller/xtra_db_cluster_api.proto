@@ -12,8 +12,8 @@ import "github.com/mwitkow/go-proto-validators/validator.proto";
 service XtraDBClusterAPI {
   // ListXtraDBClusters returns a list of XtraDB clusters.
   rpc ListXtraDBClusters(ListXtraDBClustersRequest) returns (ListXtraDBClustersResponse);
-  // GetXtraDBClusterCredentials gets a cluster's connection credentials.
-  rpc GetXtraDBClusterCredentials(GetXtraDBClusterCredentialsRequest) returns (GetXtraDBClusterCredentialsResponse);
+  // GetXtraDBCluster gets a cluster's connection credentials.
+  rpc GetXtraDBCluster(GetXtraDBClusterRequest) returns (GetXtraDBClusterResponse);
   // CreateXtraDBCluster creates a new XtraDB cluster.
   rpc CreateXtraDBCluster(CreateXtraDBClusterRequest) returns (CreateXtraDBClusterResponse);
   // UpdateXtraDBCluster updates existing XtraDB cluster.
@@ -49,7 +49,7 @@ message ListXtraDBClustersResponse {
   repeated Cluster clusters = 1;
 }
 
-message GetXtraDBClusterCredentialsRequest {
+message GetXtraDBClusterRequest {
   // Kubernetes auth.
   KubeAuth kube_auth = 1 [
     (validator.field) = {
@@ -64,7 +64,7 @@ message GetXtraDBClusterCredentialsRequest {
   ];
 }
 
-message GetXtraDBClusterCredentialsResponse {
+message GetXtraDBClusterResponse {
   // Connection hostname and credentials.
   XtraDBCredentials credentials = 1;
 }
