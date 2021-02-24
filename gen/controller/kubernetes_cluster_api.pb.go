@@ -191,7 +191,7 @@ type GetResourcesResponse struct {
 
 	// The total amount of resources of the Kubernetes cluster.
 	AllResources *Resources `protobuf:"bytes,1,opt,name=all_resources,json=allResources,proto3" json:"all_resources,omitempty"`
-	// The amount of resources that are available for consumption by future Kubernetes workloads.
+	// The amount of resources that is available for consumption by future Kubernetes workloads.
 	AvailableResources *Resources `protobuf:"bytes,2,opt,name=available_resources,json=availableResources,proto3" json:"available_resources,omitempty"`
 }
 
