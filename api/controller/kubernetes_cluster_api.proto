@@ -12,6 +12,9 @@ import "github.com/mwitkow/go-proto-validators/validator.proto";
 service KubernetesClusterAPI {
   // CheckKubernetesClusterConnection checks connection to kubernetes clusters.
   rpc CheckKubernetesClusterConnection(CheckKubernetesClusterConnectionRequest) returns (CheckKubernetesClusterConnectionResponse);
+  // GetResources returns the total amount of resources and the amount that is
+  // still available for use in the Kubernetes cluster.
+  rpc GetResources(GetResourcesRequest) returns (GetResourcesResponse);
 }
 
 message CheckKubernetesClusterConnectionRequest {
@@ -28,4 +31,20 @@ message CheckKubernetesClusterConnectionResponse {
   Operators operators = 1;
   // Status of Kubernetes cluster.
   KubernetesClusterStatus status = 2;
+}
+
+message GetResourcesRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+}
+
+message GetResourcesResponse {
+  // The total amount of resources of the Kubernetes cluster.
+  Resources all_resources = 1;
+  // The amount of resources that is available for consumption by future Kubernetes workloads.
+  Resources available_resources = 2;
 }

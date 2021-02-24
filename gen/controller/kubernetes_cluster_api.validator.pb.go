@@ -36,3 +36,27 @@ func (this *CheckKubernetesClusterConnectionResponse) Validate() error {
 	}
 	return nil
 }
+func (this *GetResourcesRequest) Validate() error {
+	if nil == this.KubeAuth {
+		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
+	}
+	if this.KubeAuth != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.KubeAuth); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
+		}
+	}
+	return nil
+}
+func (this *GetResourcesResponse) Validate() error {
+	if this.AllResources != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.AllResources); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("AllResources", err)
+		}
+	}
+	if this.AvailableResources != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.AvailableResources); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("AvailableResources", err)
+		}
+	}
+	return nil
+}
