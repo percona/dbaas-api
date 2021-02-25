@@ -44,7 +44,7 @@ message GetResourcesRequest {
 
 message GetResourcesResponse {
   // The total amount of resources of the Kubernetes cluster.
-  Resources all_resources = 1;
+  Resources all = 1;
   // The amount of resources that is available for consumption by future Kubernetes workloads.
-  Resources available_resources = 2;
+  Resources available = 2;
 }

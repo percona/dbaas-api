@@ -48,14 +48,14 @@ func (this *GetResourcesRequest) Validate() error {
 	return nil
 }
 func (this *GetResourcesResponse) Validate() error {
-	if this.AllResources != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.AllResources); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("AllResources", err)
+	if this.All != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.All); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("All", err)
 		}
 	}
-	if this.AvailableResources != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.AvailableResources); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("AvailableResources", err)
+	if this.Available != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Available); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Available", err)
 		}
 	}
 	return nil
