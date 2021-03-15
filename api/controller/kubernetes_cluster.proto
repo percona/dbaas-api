@@ -50,5 +50,8 @@ message Resources {
   // See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu.
   uint64 cpu_m = 2;
   // Disk size in bytes.
+  // NOTE: Values are large for AWS EBS because there is a rather loose limit of
+  // how much storage one can request. Maximum is 39*16TiB per node. It gets out
+  // of int64 range fast even for small clusters, that's why we use uint64.
   uint64 disk_size = 3;
 }

@@ -264,6 +264,9 @@ type Resources struct {
 	// See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu.
 	CpuM uint64 `protobuf:"varint,2,opt,name=cpu_m,json=cpuM,proto3" json:"cpu_m,omitempty"`
 	// Disk size in bytes.
+	// NOTE: Values are large for AWS EBS because there is a rather loose limit of
+	// how much storage one can request. Maximum is 39*16TiB per node. It gets out
+	// of int64 range fast even for small clusters, that's why we use uint64.
 	DiskSize uint64 `protobuf:"varint,3,opt,name=disk_size,json=diskSize,proto3" json:"disk_size,omitempty"`
 }
 
