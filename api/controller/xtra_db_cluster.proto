@@ -41,6 +41,8 @@ enum XtraDBBackupState {
 message XtraDBClusterParams {
   // PXC container parameters.
   message PXC {
+    // Docker image used for PXC.
+    string image = 4;
     // Requested compute resources.
     ComputeResources compute_resources = 1 [
       (validator.field) = {
@@ -56,6 +58,8 @@ message XtraDBClusterParams {
   }
   // ProxySQL container parameters.
   message ProxySQL {
+    // Docker image used for ProxySQL.
+    string image = 4;
     // Requested compute resources.
     ComputeResources compute_resources = 1 [
       (validator.field) = {
@@ -87,8 +91,6 @@ message XtraDBClusterParams {
       msg_exists: true
     }
   ];
-  // Docker image used for PXC.
-  string image = 4;
 }
 
 // XtraDBCredentials is cluster connection credentials.
