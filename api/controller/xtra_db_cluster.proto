@@ -42,7 +42,7 @@ message XtraDBClusterParams {
   // PXC container parameters.
   message PXC {
     // Docker image used for PXC.
-    string image = 4;
+    string image = 3;
     // Requested compute resources.
     ComputeResources compute_resources = 1 [
       (validator.field) = {
@@ -59,7 +59,7 @@ message XtraDBClusterParams {
   // ProxySQL container parameters.
   message ProxySQL {
     // Docker image used for ProxySQL.
-    string image = 4;
+    string image = 3;
     // Requested compute resources.
     ComputeResources compute_resources = 1 [
       (validator.field) = {
