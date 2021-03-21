@@ -62,6 +62,8 @@ message PSMDBClusterParams {
       msg_exists: true
     }
   ];
+  // Version of PSMDB.
+  string version = 3;
 }
 
 // PSMDBCredentials represents the credentials needed to connect to the cluster.

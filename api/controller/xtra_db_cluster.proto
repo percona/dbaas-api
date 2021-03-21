@@ -87,6 +87,8 @@ message XtraDBClusterParams {
       msg_exists: true
     }
   ];
+  // Version of PXC.
+  string version = 4;
 }
 
 // XtraDBCredentials is cluster connection credentials.
