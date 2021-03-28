@@ -30,6 +30,8 @@ enum KubernetesClusterStatus {
 message Operator {
   // Status of the operator.
   OperatorsStatus status = 1;
+  // Installed version.
+  string version = 2;
 }
 
 // Operators contains list of operators installed in Kubernetes cluster.
