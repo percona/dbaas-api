@@ -90,8 +90,6 @@ message CreateXtraDBClusterRequest {
   ];
   // PMM params. If nil do not turn on monitoring.
   PMMParams pmm = 5;
-  // PMM server public address. Deprecated. Do not use.
-  string pmm_public_address = 4 [deprecated = true];
 }
 
 message CreateXtraDBClusterResponse {}
