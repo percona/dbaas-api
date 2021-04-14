@@ -39,19 +39,19 @@ message PMMParams {
   // PMM server public address.
   string public_address = 1 [
     (validator.field) = {
-      msg_exists: true
+      string_not_empty: true
     }
   ];
   // PMM server admin login.
   string login = 2 [
     (validator.field) = {
-      msg_exists: true
+      string_not_empty: true
     }
   ];
   // PMM server admin password.
   string password = 3 [
     (validator.field) = {
-      msg_exists: true
+      string_not_empty: true
     }
   ];
 }
