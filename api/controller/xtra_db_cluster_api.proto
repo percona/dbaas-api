@@ -119,6 +119,11 @@ message UpdateXtraDBClusterRequest {
       // Requested compute resources.
       ComputeResources compute_resources = 1;
     }
+    // HAProxy container parameters.
+    message HAProxy {
+      // Requested compute resources.
+      ComputeResources compute_resources = 1;
+    }
     // Cluster size.
     int32 cluster_size = 1;
     // PXC container parameters.
@@ -129,6 +134,8 @@ message UpdateXtraDBClusterRequest {
     bool suspend = 5;
     // Resume cluster `pause: false`.
     bool resume = 6;
+    // HAProxy container parameters.
+    HAProxy haproxy = 7;
   }
   // Cluster parameters.
   UpdateXtraDBClusterParams params = 3 [
