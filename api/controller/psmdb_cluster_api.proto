@@ -88,8 +88,8 @@ message CreatePSMDBClusterRequest {
       msg_exists: true
     }
   ];
-  // PMM server public address.
-  string pmm_public_address = 4;
+  // PMM params. If nil do not turn on monitoring.
+  PMMParams pmm = 5;
 }
 
 message CreatePSMDBClusterResponse {}
