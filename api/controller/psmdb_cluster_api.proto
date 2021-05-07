@@ -12,8 +12,8 @@ import "github.com/mwitkow/go-proto-validators/validator.proto";
 service PSMDBClusterAPI {
   // ListPSMDBClusters returns a list of PSMDB clusters.
   rpc ListPSMDBClusters(ListPSMDBClustersRequest) returns (ListPSMDBClustersResponse);
-  // GetPSMDBCluster gets a cluster's connection credentials.
-  rpc GetPSMDBCluster(GetPSMDBClusterRequest) returns (GetPSMDBClusterResponse);
+  // GetPSMDBClusterCredentials gets a cluster's connection credentials.
+  rpc GetPSMDBClusterCredentials(GetPSMDBClusterCredentialsRequest) returns (GetPSMDBClusterCredentialsResponse);
   // CreatePSMDBCluster creates a new PSMDB cluster.
   rpc CreatePSMDBCluster(CreatePSMDBClusterRequest) returns (CreatePSMDBClusterResponse);
   // UpdatePSMDBCluster updates existing PSMDB cluster.
@@ -49,7 +49,7 @@ message ListPSMDBClustersResponse {
   repeated Cluster clusters = 1;
 }
 
-message GetPSMDBClusterRequest {
+message GetPSMDBClusterCredentialsRequest {
   // Kubernetes auth.
   KubeAuth kube_auth = 1 [
     (validator.field) = {
@@ -64,7 +64,7 @@ message GetPSMDBClusterRequest {
   ];
 }
 
-message GetPSMDBClusterResponse {
+message GetPSMDBClusterCredentialsResponse {
   // Cluster hostname and credentials.
   PSMDBCredentials credentials = 1;
 }
@@ -88,8 +88,8 @@ message CreatePSMDBClusterRequest {
       msg_exists: true
     }
   ];
-  // PMM server public address.
-  string pmm_public_address = 4;
+  // PMM params. If nil do not turn on monitoring.
+  PMMParams pmm = 5;
 }
 
 message CreatePSMDBClusterResponse {}
