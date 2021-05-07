@@ -33,3 +33,25 @@ message ComputeResources {
   // Memory in bytes.
   int64 memory_bytes = 2;
 }
+
+// PMMParams represents params related to pmm. If nil do not turn on monitoring.
+message PMMParams {
+  // PMM server public address.
+  string public_address = 1 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+  // PMM server admin login.
+  string login = 2 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+  // PMM server admin password.
+  string password = 3 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+}
