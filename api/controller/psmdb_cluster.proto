@@ -64,8 +64,6 @@ message PSMDBClusterParams {
   ];
   // Docker image used for PSMDB.
   string image = 3;
-  // Make DB accessible outside of K8s cluster.
-  bool expose = 4;
 }
 
 // PSMDBCredentials represents the credentials needed to connect to the cluster.
