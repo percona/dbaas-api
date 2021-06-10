@@ -98,6 +98,8 @@ message XtraDBClusterParams {
   ProxySQL proxysql = 3;
   // HAProxy container parameters.
   HAProxy haproxy = 4;
+  // Operator version indicates what api version should we use for PXC cluster creation.
+  string operator_version = 5;
 }
 
 // XtraDBCredentials is cluster connection credentials.
