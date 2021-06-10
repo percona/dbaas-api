@@ -65,7 +65,11 @@ message PSMDBClusterParams {
   // Docker image used for PSMDB.
   string image = 3;
   // Operator version indicates what api version should we use for PSMDB cluster creation.
-  string operator_version = 4;
+  string operator_version = 4 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
 }
 
 // PSMDBCredentials represents the credentials needed to connect to the cluster.

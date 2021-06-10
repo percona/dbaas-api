@@ -99,7 +99,11 @@ message XtraDBClusterParams {
   // HAProxy container parameters.
   HAProxy haproxy = 4;
   // Operator version indicates what api version should we use for PXC cluster creation.
-  string operator_version = 5;
+  string operator_version = 5 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
 }
 
 // XtraDBCredentials is cluster connection credentials.

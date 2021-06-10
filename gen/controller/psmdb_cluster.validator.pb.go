@@ -29,6 +29,9 @@ func (this *PSMDBClusterParams) Validate() error {
 			return github_com_mwitkow_go_proto_validators.FieldError("Replicaset", err)
 		}
 	}
+	if this.OperatorVersion == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("OperatorVersion", fmt.Errorf(`value '%v' must not be an empty string`, this.OperatorVersion))
+	}
 	return nil
 }
 func (this *PSMDBClusterParams_ReplicaSet) Validate() error {

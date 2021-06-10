@@ -39,6 +39,9 @@ func (this *XtraDBClusterParams) Validate() error {
 			return github_com_mwitkow_go_proto_validators.FieldError("Haproxy", err)
 		}
 	}
+	if this.OperatorVersion == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("OperatorVersion", fmt.Errorf(`value '%v' must not be an empty string`, this.OperatorVersion))
+	}
 	return nil
 }
 func (this *XtraDBClusterParams_PXC) Validate() error {
