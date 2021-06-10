@@ -24,6 +24,18 @@ message CheckKubernetesClusterConnectionRequest {
       msg_exists: true
     }
   ];
+  // Version of the PXC operator that is to be checked if it's installed.
+  string pxc_operator_version = 2 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+  // Version of the PSMDB operator that is to be checked if it's installed.
+  string psmdb_operator_version = 3 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
 }
 
 message CheckKubernetesClusterConnectionResponse {

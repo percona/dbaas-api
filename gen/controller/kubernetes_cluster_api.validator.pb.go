@@ -26,6 +26,12 @@ func (this *CheckKubernetesClusterConnectionRequest) Validate() error {
 			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
 		}
 	}
+	if this.PxcOperatorVersion == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("PxcOperatorVersion", fmt.Errorf(`value '%v' must not be an empty string`, this.PxcOperatorVersion))
+	}
+	if this.PsmdbOperatorVersion == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("PsmdbOperatorVersion", fmt.Errorf(`value '%v' must not be an empty string`, this.PsmdbOperatorVersion))
+	}
 	return nil
 }
 func (this *CheckKubernetesClusterConnectionResponse) Validate() error {
