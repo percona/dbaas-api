@@ -26,6 +26,9 @@ func (this *InstallXtraDBOperatorRequest) Validate() error {
 			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
 		}
 	}
+	if this.Version == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Version", fmt.Errorf(`value '%v' must not be an empty string`, this.Version))
+	}
 	return nil
 }
 func (this *InstallXtraDBOperatorResponse) Validate() error {
