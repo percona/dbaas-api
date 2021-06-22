@@ -32,7 +32,7 @@ type OperatorsStatus int32
 const (
 	// OPERATORS_STATUS_INVALID represents unknown state.
 	OperatorsStatus_OPERATORS_STATUS_INVALID OperatorsStatus = 0
-	// OPERATORS_STATUS_OK represents that operators are installed.
+	// OPERATORS_STATUS_OK represents that operators are installed and have supported API version.
 	OperatorsStatus_OPERATORS_STATUS_OK OperatorsStatus = 1
 	// OPERATORS_STATUS_NOT_INSTALLED represents that operators are not installed.
 	OperatorsStatus_OPERATORS_STATUS_NOT_INSTALLED OperatorsStatus = 3
