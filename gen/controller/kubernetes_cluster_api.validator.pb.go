@@ -60,3 +60,25 @@ func (this *GetResourcesResponse) Validate() error {
 	}
 	return nil
 }
+func (this *StartMonitoringRequest) Validate() error {
+	if nil == this.KubeAuth {
+		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
+	}
+	if this.KubeAuth != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.KubeAuth); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
+		}
+	}
+	if nil == this.Pmm {
+		return github_com_mwitkow_go_proto_validators.FieldError("Pmm", fmt.Errorf("message must exist"))
+	}
+	if this.Pmm != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Pmm); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Pmm", err)
+		}
+	}
+	return nil
+}
+func (this *StartMonitoringResponse) Validate() error {
+	return nil
+}

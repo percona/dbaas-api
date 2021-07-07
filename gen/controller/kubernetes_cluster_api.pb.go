@@ -241,6 +241,101 @@ func (x *GetResourcesResponse) GetAvailable() *Resources {
 	return nil
 }
 
+type StartMonitoringRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Kubernetes auth.
+	KubeAuth *KubeAuth `protobuf:"bytes,1,opt,name=kube_auth,json=kubeAuth,proto3" json:"kube_auth,omitempty"`
+	// PMM params.
+	Pmm *PMMParams `protobuf:"bytes,2,opt,name=pmm,proto3" json:"pmm,omitempty"`
+}
+
+func (x *StartMonitoringRequest) Reset() {
+	*x = StartMonitoringRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_controller_kubernetes_cluster_api_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StartMonitoringRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartMonitoringRequest) ProtoMessage() {}
+
+func (x *StartMonitoringRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_controller_kubernetes_cluster_api_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartMonitoringRequest.ProtoReflect.Descriptor instead.
+func (*StartMonitoringRequest) Descriptor() ([]byte, []int) {
+	return file_controller_kubernetes_cluster_api_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *StartMonitoringRequest) GetKubeAuth() *KubeAuth {
+	if x != nil {
+		return x.KubeAuth
+	}
+	return nil
+}
+
+func (x *StartMonitoringRequest) GetPmm() *PMMParams {
+	if x != nil {
+		return x.Pmm
+	}
+	return nil
+}
+
+type StartMonitoringResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *StartMonitoringResponse) Reset() {
+	*x = StartMonitoringResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_controller_kubernetes_cluster_api_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StartMonitoringResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartMonitoringResponse) ProtoMessage() {}
+
+func (x *StartMonitoringResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_controller_kubernetes_cluster_api_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartMonitoringResponse.ProtoReflect.Descriptor instead.
+func (*StartMonitoringResponse) Descriptor() ([]byte, []int) {
+	return file_controller_kubernetes_cluster_api_proto_rawDescGZIP(), []int{5}
+}
+
 var File_controller_kubernetes_cluster_api_proto protoreflect.FileDescriptor
 
 var file_controller_kubernetes_cluster_api_proto_rawDesc = []byte{
@@ -297,7 +392,21 @@ var file_controller_kubernetes_cluster_api_proto_rawDesc = []byte{
 	0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x64, 0x62, 0x61, 0x61, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x74,
 	0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x52,
 	0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x73, 0x52, 0x09, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61,
-	0x62, 0x6c, 0x65, 0x32, 0xf6, 0x02, 0x0a, 0x14, 0x4b, 0x75, 0x62, 0x65, 0x72, 0x6e, 0x65, 0x74,
+	0x62, 0x6c, 0x65, 0x22, 0xc2, 0x01, 0x0a, 0x16, 0x53, 0x74, 0x61, 0x72, 0x74, 0x4d, 0x6f, 0x6e,
+	0x69, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x58,
+	0x0a, 0x09, 0x6b, 0x75, 0x62, 0x65, 0x5f, 0x61, 0x75, 0x74, 0x68, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x33, 0x2e, 0x70, 0x65, 0x72, 0x63, 0x6f, 0x6e, 0x61, 0x2e, 0x70, 0x6c, 0x61, 0x74,
+	0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x64, 0x62, 0x61, 0x61, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x74, 0x72,
+	0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4b, 0x75,
+	0x62, 0x65, 0x41, 0x75, 0x74, 0x68, 0x42, 0x06, 0xe2, 0xdf, 0x1f, 0x02, 0x20, 0x01, 0x52, 0x08,
+	0x6b, 0x75, 0x62, 0x65, 0x41, 0x75, 0x74, 0x68, 0x12, 0x4e, 0x0a, 0x03, 0x70, 0x6d, 0x6d, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x34, 0x2e, 0x70, 0x65, 0x72, 0x63, 0x6f, 0x6e, 0x61, 0x2e,
+	0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x64, 0x62, 0x61, 0x61, 0x73, 0x2e, 0x63,
+	0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
+	0x31, 0x2e, 0x50, 0x4d, 0x4d, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x42, 0x06, 0xe2, 0xdf, 0x1f,
+	0x02, 0x20, 0x01, 0x52, 0x03, 0x70, 0x6d, 0x6d, 0x22, 0x19, 0x0a, 0x17, 0x53, 0x74, 0x61, 0x72,
+	0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x32, 0x91, 0x04, 0x0a, 0x14, 0x4b, 0x75, 0x62, 0x65, 0x72, 0x6e, 0x65, 0x74,
 	0x65, 0x73, 0x43, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x41, 0x50, 0x49, 0x12, 0xcb, 0x01, 0x0a,
 	0x20, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x4b, 0x75, 0x62, 0x65, 0x72, 0x6e, 0x65, 0x74, 0x65, 0x73,
 	0x43, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f,
@@ -320,10 +429,19 @@ var file_controller_kubernetes_cluster_api_proto_rawDesc = []byte{
 	0x72, 0x63, 0x6f, 0x6e, 0x61, 0x2e, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x64,
 	0x62, 0x61, 0x61, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x2e,
 	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x65, 0x73, 0x6f, 0x75,
-	0x72, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x1e, 0x5a, 0x1c,
-	0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x3b, 0x63, 0x6f, 0x6e, 0x74, 0x72,
-	0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x72, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x98, 0x01, 0x0a,
+	0x0f, 0x53, 0x74, 0x61, 0x72, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67,
+	0x12, 0x41, 0x2e, 0x70, 0x65, 0x72, 0x63, 0x6f, 0x6e, 0x61, 0x2e, 0x70, 0x6c, 0x61, 0x74, 0x66,
+	0x6f, 0x72, 0x6d, 0x2e, 0x64, 0x62, 0x61, 0x61, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f,
+	0x6c, 0x6c, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x53, 0x74, 0x61,
+	0x72, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x42, 0x2e, 0x70, 0x65, 0x72, 0x63, 0x6f, 0x6e, 0x61, 0x2e, 0x70, 0x6c,
+	0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x64, 0x62, 0x61, 0x61, 0x73, 0x2e, 0x63, 0x6f, 0x6e,
+	0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e,
+	0x53, 0x74, 0x61, 0x72, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x69, 0x6e, 0x67, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x1e, 0x5a, 0x1c, 0x63, 0x6f, 0x6e, 0x74, 0x72,
+	0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x3b, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72,
+	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -338,33 +456,40 @@ func file_controller_kubernetes_cluster_api_proto_rawDescGZIP() []byte {
 	return file_controller_kubernetes_cluster_api_proto_rawDescData
 }
 
-var file_controller_kubernetes_cluster_api_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_controller_kubernetes_cluster_api_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_controller_kubernetes_cluster_api_proto_goTypes = []interface{}{
 	(*CheckKubernetesClusterConnectionRequest)(nil),  // 0: percona.platform.dbaas.controller.v1beta1.CheckKubernetesClusterConnectionRequest
 	(*CheckKubernetesClusterConnectionResponse)(nil), // 1: percona.platform.dbaas.controller.v1beta1.CheckKubernetesClusterConnectionResponse
 	(*GetResourcesRequest)(nil),                      // 2: percona.platform.dbaas.controller.v1beta1.GetResourcesRequest
 	(*GetResourcesResponse)(nil),                     // 3: percona.platform.dbaas.controller.v1beta1.GetResourcesResponse
-	(*KubeAuth)(nil),                                 // 4: percona.platform.dbaas.controller.v1beta1.KubeAuth
-	(*Operators)(nil),                                // 5: percona.platform.dbaas.controller.v1beta1.Operators
-	(KubernetesClusterStatus)(0),                     // 6: percona.platform.dbaas.controller.v1beta1.KubernetesClusterStatus
-	(*Resources)(nil),                                // 7: percona.platform.dbaas.controller.v1beta1.Resources
+	(*StartMonitoringRequest)(nil),                   // 4: percona.platform.dbaas.controller.v1beta1.StartMonitoringRequest
+	(*StartMonitoringResponse)(nil),                  // 5: percona.platform.dbaas.controller.v1beta1.StartMonitoringResponse
+	(*KubeAuth)(nil),                                 // 6: percona.platform.dbaas.controller.v1beta1.KubeAuth
+	(*Operators)(nil),                                // 7: percona.platform.dbaas.controller.v1beta1.Operators
+	(KubernetesClusterStatus)(0),                     // 8: percona.platform.dbaas.controller.v1beta1.KubernetesClusterStatus
+	(*Resources)(nil),                                // 9: percona.platform.dbaas.controller.v1beta1.Resources
+	(*PMMParams)(nil),                                // 10: percona.platform.dbaas.controller.v1beta1.PMMParams
 }
 var file_controller_kubernetes_cluster_api_proto_depIdxs = []int32{
-	4, // 0: percona.platform.dbaas.controller.v1beta1.CheckKubernetesClusterConnectionRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
-	5, // 1: percona.platform.dbaas.controller.v1beta1.CheckKubernetesClusterConnectionResponse.operators:type_name -> percona.platform.dbaas.controller.v1beta1.Operators
-	6, // 2: percona.platform.dbaas.controller.v1beta1.CheckKubernetesClusterConnectionResponse.status:type_name -> percona.platform.dbaas.controller.v1beta1.KubernetesClusterStatus
-	4, // 3: percona.platform.dbaas.controller.v1beta1.GetResourcesRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
-	7, // 4: percona.platform.dbaas.controller.v1beta1.GetResourcesResponse.all:type_name -> percona.platform.dbaas.controller.v1beta1.Resources
-	7, // 5: percona.platform.dbaas.controller.v1beta1.GetResourcesResponse.available:type_name -> percona.platform.dbaas.controller.v1beta1.Resources
-	0, // 6: percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI.CheckKubernetesClusterConnection:input_type -> percona.platform.dbaas.controller.v1beta1.CheckKubernetesClusterConnectionRequest
-	2, // 7: percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI.GetResources:input_type -> percona.platform.dbaas.controller.v1beta1.GetResourcesRequest
-	1, // 8: percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI.CheckKubernetesClusterConnection:output_type -> percona.platform.dbaas.controller.v1beta1.CheckKubernetesClusterConnectionResponse
-	3, // 9: percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI.GetResources:output_type -> percona.platform.dbaas.controller.v1beta1.GetResourcesResponse
-	8, // [8:10] is the sub-list for method output_type
-	6, // [6:8] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	6,  // 0: percona.platform.dbaas.controller.v1beta1.CheckKubernetesClusterConnectionRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
+	7,  // 1: percona.platform.dbaas.controller.v1beta1.CheckKubernetesClusterConnectionResponse.operators:type_name -> percona.platform.dbaas.controller.v1beta1.Operators
+	8,  // 2: percona.platform.dbaas.controller.v1beta1.CheckKubernetesClusterConnectionResponse.status:type_name -> percona.platform.dbaas.controller.v1beta1.KubernetesClusterStatus
+	6,  // 3: percona.platform.dbaas.controller.v1beta1.GetResourcesRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
+	9,  // 4: percona.platform.dbaas.controller.v1beta1.GetResourcesResponse.all:type_name -> percona.platform.dbaas.controller.v1beta1.Resources
+	9,  // 5: percona.platform.dbaas.controller.v1beta1.GetResourcesResponse.available:type_name -> percona.platform.dbaas.controller.v1beta1.Resources
+	6,  // 6: percona.platform.dbaas.controller.v1beta1.StartMonitoringRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
+	10, // 7: percona.platform.dbaas.controller.v1beta1.StartMonitoringRequest.pmm:type_name -> percona.platform.dbaas.controller.v1beta1.PMMParams
+	0,  // 8: percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI.CheckKubernetesClusterConnection:input_type -> percona.platform.dbaas.controller.v1beta1.CheckKubernetesClusterConnectionRequest
+	2,  // 9: percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI.GetResources:input_type -> percona.platform.dbaas.controller.v1beta1.GetResourcesRequest
+	4,  // 10: percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI.StartMonitoring:input_type -> percona.platform.dbaas.controller.v1beta1.StartMonitoringRequest
+	1,  // 11: percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI.CheckKubernetesClusterConnection:output_type -> percona.platform.dbaas.controller.v1beta1.CheckKubernetesClusterConnectionResponse
+	3,  // 12: percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI.GetResources:output_type -> percona.platform.dbaas.controller.v1beta1.GetResourcesResponse
+	5,  // 13: percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI.StartMonitoring:output_type -> percona.platform.dbaas.controller.v1beta1.StartMonitoringResponse
+	11, // [11:14] is the sub-list for method output_type
+	8,  // [8:11] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_controller_kubernetes_cluster_api_proto_init() }
@@ -423,6 +548,30 @@ func file_controller_kubernetes_cluster_api_proto_init() {
 				return nil
 			}
 		}
+		file_controller_kubernetes_cluster_api_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StartMonitoringRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_controller_kubernetes_cluster_api_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StartMonitoringResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -430,7 +579,7 @@ func file_controller_kubernetes_cluster_api_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_controller_kubernetes_cluster_api_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -461,6 +610,8 @@ type KubernetesClusterAPIClient interface {
 	// GetResources returns the total amount of resources and the amount that is
 	// still available for use in the Kubernetes cluster.
 	GetResources(ctx context.Context, in *GetResourcesRequest, opts ...grpc.CallOption) (*GetResourcesResponse, error)
+	// StartMonitoring sets up victoria metrics operator to monitor kubernetes cluster.
+	StartMonitoring(ctx context.Context, in *StartMonitoringRequest, opts ...grpc.CallOption) (*StartMonitoringResponse, error)
 }
 
 type kubernetesClusterAPIClient struct {
@@ -489,6 +640,15 @@ func (c *kubernetesClusterAPIClient) GetResources(ctx context.Context, in *GetRe
 	return out, nil
 }
 
+func (c *kubernetesClusterAPIClient) StartMonitoring(ctx context.Context, in *StartMonitoringRequest, opts ...grpc.CallOption) (*StartMonitoringResponse, error) {
+	out := new(StartMonitoringResponse)
+	err := c.cc.Invoke(ctx, "/percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI/StartMonitoring", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // KubernetesClusterAPIServer is the server API for KubernetesClusterAPI service.
 type KubernetesClusterAPIServer interface {
 	// CheckKubernetesClusterConnection checks connection to kubernetes clusters.
@@ -496,6 +656,8 @@ type KubernetesClusterAPIServer interface {
 	// GetResources returns the total amount of resources and the amount that is
 	// still available for use in the Kubernetes cluster.
 	GetResources(context.Context, *GetResourcesRequest) (*GetResourcesResponse, error)
+	// StartMonitoring sets up victoria metrics operator to monitor kubernetes cluster.
+	StartMonitoring(context.Context, *StartMonitoringRequest) (*StartMonitoringResponse, error)
 }
 
 // UnimplementedKubernetesClusterAPIServer can be embedded to have forward compatible implementations.
@@ -507,6 +669,9 @@ func (*UnimplementedKubernetesClusterAPIServer) CheckKubernetesClusterConnection
 }
 func (*UnimplementedKubernetesClusterAPIServer) GetResources(context.Context, *GetResourcesRequest) (*GetResourcesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetResources not implemented")
+}
+func (*UnimplementedKubernetesClusterAPIServer) StartMonitoring(context.Context, *StartMonitoringRequest) (*StartMonitoringResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartMonitoring not implemented")
 }
 
 func RegisterKubernetesClusterAPIServer(s *grpc.Server, srv KubernetesClusterAPIServer) {
@@ -549,6 +714,24 @@ func _KubernetesClusterAPI_GetResources_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _KubernetesClusterAPI_StartMonitoring_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartMonitoringRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KubernetesClusterAPIServer).StartMonitoring(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI/StartMonitoring",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KubernetesClusterAPIServer).StartMonitoring(ctx, req.(*StartMonitoringRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _KubernetesClusterAPI_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "percona.platform.dbaas.controller.v1beta1.KubernetesClusterAPI",
 	HandlerType: (*KubernetesClusterAPIServer)(nil),
@@ -560,6 +743,10 @@ var _KubernetesClusterAPI_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetResources",
 			Handler:    _KubernetesClusterAPI_GetResources_Handler,
+		},
+		{
+			MethodName: "StartMonitoring",
+			Handler:    _KubernetesClusterAPI_StartMonitoring_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
