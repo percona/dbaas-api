@@ -8,7 +8,6 @@ import (
 	math "math"
 
 	proto "github.com/golang/protobuf/proto"
-	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -16,20 +15,7 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-func (this *Operator) Validate() error {
-	return nil
-}
 func (this *Operators) Validate() error {
-	if this.Xtradb != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Xtradb); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Xtradb", err)
-		}
-	}
-	if this.Psmdb != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Psmdb); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Psmdb", err)
-		}
-	}
 	return nil
 }
 func (this *Resources) Validate() error {
