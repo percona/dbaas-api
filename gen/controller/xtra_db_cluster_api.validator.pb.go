@@ -204,12 +204,12 @@ func (this *RestartXtraDBClusterRequest) Validate() error {
 func (this *RestartXtraDBClusterResponse) Validate() error {
 	return nil
 }
-func (this *GetInstalledPXCVersionRequest) Validate() error {
-	if this.DbClusterName == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("DbClusterName", fmt.Errorf(`value '%v' must not be an empty string`, this.DbClusterName))
+func (this *GetXtraDBClusterVersionRequest) Validate() error {
+	if this.ClusterName == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("ClusterName", fmt.Errorf(`value '%v' must not be an empty string`, this.ClusterName))
 	}
 	return nil
 }
-func (this *GetInstalledPXCVersionResponse) Validate() error {
+func (this *GetXtraDBClusterVersionResponse) Validate() error {
 	return nil
 }
