@@ -175,3 +175,12 @@ func (this *RestartPSMDBClusterRequest) Validate() error {
 func (this *RestartPSMDBClusterResponse) Validate() error {
 	return nil
 }
+func (this *GetInstalledPSMDBVersionRequest) Validate() error {
+	if this.DbClusterName == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("DbClusterName", fmt.Errorf(`value '%v' must not be an empty string`, this.DbClusterName))
+	}
+	return nil
+}
+func (this *GetInstalledPSMDBVersionResponse) Validate() error {
+	return nil
+}

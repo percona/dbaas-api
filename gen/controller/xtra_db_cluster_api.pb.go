@@ -648,6 +648,105 @@ func (*RestartXtraDBClusterResponse) Descriptor() ([]byte, []int) {
 	return file_controller_xtra_db_cluster_api_proto_rawDescGZIP(), []int{11}
 }
 
+// GetInstalledPXCVersionRequest is used for requesting installed version of database cluster.
+// Database type does not have to be included since we use this message in different services.
+type GetInstalledPXCVersionRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Database cluster name.
+	DbClusterName string `protobuf:"bytes,1,opt,name=db_cluster_name,json=dbClusterName,proto3" json:"db_cluster_name,omitempty"`
+}
+
+func (x *GetInstalledPXCVersionRequest) Reset() {
+	*x = GetInstalledPXCVersionRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetInstalledPXCVersionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetInstalledPXCVersionRequest) ProtoMessage() {}
+
+func (x *GetInstalledPXCVersionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetInstalledPXCVersionRequest.ProtoReflect.Descriptor instead.
+func (*GetInstalledPXCVersionRequest) Descriptor() ([]byte, []int) {
+	return file_controller_xtra_db_cluster_api_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *GetInstalledPXCVersionRequest) GetDbClusterName() string {
+	if x != nil {
+		return x.DbClusterName
+	}
+	return ""
+}
+
+// GetInstalledPXCVersionResponse contains installed version of a database cluster.
+type GetInstalledPXCVersionResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Installed version of a database cluster.
+	InstalledVersion string `protobuf:"bytes,1,opt,name=installed_version,json=installedVersion,proto3" json:"installed_version,omitempty"`
+}
+
+func (x *GetInstalledPXCVersionResponse) Reset() {
+	*x = GetInstalledPXCVersionResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetInstalledPXCVersionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetInstalledPXCVersionResponse) ProtoMessage() {}
+
+func (x *GetInstalledPXCVersionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetInstalledPXCVersionResponse.ProtoReflect.Descriptor instead.
+func (*GetInstalledPXCVersionResponse) Descriptor() ([]byte, []int) {
+	return file_controller_xtra_db_cluster_api_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *GetInstalledPXCVersionResponse) GetInstalledVersion() string {
+	if x != nil {
+		return x.InstalledVersion
+	}
+	return ""
+}
+
 // Cluster represents XtraDB cluster information.
 type ListXtraDBClustersResponse_Cluster struct {
 	state         protoimpl.MessageState
@@ -669,7 +768,7 @@ type ListXtraDBClustersResponse_Cluster struct {
 func (x *ListXtraDBClustersResponse_Cluster) Reset() {
 	*x = ListXtraDBClustersResponse_Cluster{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[12]
+		mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -682,7 +781,7 @@ func (x *ListXtraDBClustersResponse_Cluster) String() string {
 func (*ListXtraDBClustersResponse_Cluster) ProtoMessage() {}
 
 func (x *ListXtraDBClustersResponse_Cluster) ProtoReflect() protoreflect.Message {
-	mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[12]
+	mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -756,7 +855,7 @@ type UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams struct {
 func (x *UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams) Reset() {
 	*x = UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[13]
+		mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -769,7 +868,7 @@ func (x *UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams) String() string {
 func (*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams) ProtoMessage() {}
 
 func (x *UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams) ProtoReflect() protoreflect.Message {
-	mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[13]
+	mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -840,7 +939,7 @@ type UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_PXC struct {
 func (x *UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_PXC) Reset() {
 	*x = UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_PXC{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[14]
+		mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -853,7 +952,7 @@ func (x *UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_PXC) String() stri
 func (*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_PXC) ProtoMessage() {}
 
 func (x *UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_PXC) ProtoReflect() protoreflect.Message {
-	mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[14]
+	mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -889,7 +988,7 @@ type UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_ProxySQL struct {
 func (x *UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_ProxySQL) Reset() {
 	*x = UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_ProxySQL{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[15]
+		mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -902,7 +1001,7 @@ func (x *UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_ProxySQL) String()
 func (*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_ProxySQL) ProtoMessage() {}
 
 func (x *UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_ProxySQL) ProtoReflect() protoreflect.Message {
-	mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[15]
+	mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -938,7 +1037,7 @@ type UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_HAProxy struct {
 func (x *UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_HAProxy) Reset() {
 	*x = UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_HAProxy{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[16]
+		mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -951,7 +1050,7 @@ func (x *UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_HAProxy) String() 
 func (*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_HAProxy) ProtoMessage() {}
 
 func (x *UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_HAProxy) ProtoReflect() protoreflect.Message {
-	mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[16]
+	mi := &file_controller_xtra_db_cluster_api_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1162,7 +1261,17 @@ var file_controller_xtra_db_cluster_api_proto_rawDesc = []byte{
 	0x28, 0x09, 0x42, 0x06, 0xe2, 0xdf, 0x1f, 0x02, 0x58, 0x01, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65,
 	0x22, 0x1e, 0x0a, 0x1c, 0x52, 0x65, 0x73, 0x74, 0x61, 0x72, 0x74, 0x58, 0x74, 0x72, 0x61, 0x44,
 	0x42, 0x43, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x32, 0x94, 0x08, 0x0a, 0x10, 0x58, 0x74, 0x72, 0x61, 0x44, 0x42, 0x43, 0x6c, 0x75, 0x73, 0x74,
+	0x22, 0x4f, 0x0a, 0x1d, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x73, 0x74, 0x61, 0x6c, 0x6c, 0x65, 0x64,
+	0x50, 0x58, 0x43, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x12, 0x2e, 0x0a, 0x0f, 0x64, 0x62, 0x5f, 0x63, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x5f,
+	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x06, 0xe2, 0xdf, 0x1f, 0x02,
+	0x58, 0x01, 0x52, 0x0d, 0x64, 0x62, 0x43, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x4e, 0x61, 0x6d,
+	0x65, 0x22, 0x4d, 0x0a, 0x1e, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x73, 0x74, 0x61, 0x6c, 0x6c, 0x65,
+	0x64, 0x50, 0x58, 0x43, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x2b, 0x0a, 0x11, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6c, 0x6c, 0x65, 0x64,
+	0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x10,
+	0x69, 0x6e, 0x73, 0x74, 0x61, 0x6c, 0x6c, 0x65, 0x64, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e,
+	0x32, 0xc4, 0x09, 0x0a, 0x10, 0x58, 0x74, 0x72, 0x61, 0x44, 0x42, 0x43, 0x6c, 0x75, 0x73, 0x74,
 	0x65, 0x72, 0x41, 0x50, 0x49, 0x12, 0xa1, 0x01, 0x0a, 0x12, 0x4c, 0x69, 0x73, 0x74, 0x58, 0x74,
 	0x72, 0x61, 0x44, 0x42, 0x43, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x73, 0x12, 0x44, 0x2e, 0x70,
 	0x65, 0x72, 0x63, 0x6f, 0x6e, 0x61, 0x2e, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e,
@@ -1227,6 +1336,17 @@ var file_controller_xtra_db_cluster_api_proto_rawDesc = []byte{
 	0x6d, 0x2e, 0x64, 0x62, 0x61, 0x61, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c,
 	0x65, 0x72, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x52, 0x65, 0x73, 0x74, 0x61,
 	0x72, 0x74, 0x58, 0x74, 0x72, 0x61, 0x44, 0x42, 0x43, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0xad, 0x01, 0x0a, 0x16, 0x47, 0x65, 0x74, 0x49,
+	0x6e, 0x73, 0x74, 0x61, 0x6c, 0x6c, 0x65, 0x64, 0x50, 0x58, 0x43, 0x56, 0x65, 0x72, 0x73, 0x69,
+	0x6f, 0x6e, 0x12, 0x48, 0x2e, 0x70, 0x65, 0x72, 0x63, 0x6f, 0x6e, 0x61, 0x2e, 0x70, 0x6c, 0x61,
+	0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x64, 0x62, 0x61, 0x61, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x74,
+	0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x47,
+	0x65, 0x74, 0x49, 0x6e, 0x73, 0x74, 0x61, 0x6c, 0x6c, 0x65, 0x64, 0x50, 0x58, 0x43, 0x56, 0x65,
+	0x72, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x49, 0x2e, 0x70,
+	0x65, 0x72, 0x63, 0x6f, 0x6e, 0x61, 0x2e, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e,
+	0x64, 0x62, 0x61, 0x61, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72,
+	0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x73, 0x74,
+	0x61, 0x6c, 0x6c, 0x65, 0x64, 0x50, 0x58, 0x43, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x52,
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x1e, 0x5a, 0x1c, 0x63, 0x6f, 0x6e, 0x74, 0x72,
 	0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x3b, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72,
 	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
@@ -1244,7 +1364,7 @@ func file_controller_xtra_db_cluster_api_proto_rawDescGZIP() []byte {
 	return file_controller_xtra_db_cluster_api_proto_rawDescData
 }
 
-var file_controller_xtra_db_cluster_api_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_controller_xtra_db_cluster_api_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_controller_xtra_db_cluster_api_proto_goTypes = []interface{}{
 	(*ListXtraDBClustersRequest)(nil),                                     // 0: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersRequest
 	(*ListXtraDBClustersResponse)(nil),                                    // 1: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse
@@ -1258,54 +1378,58 @@ var file_controller_xtra_db_cluster_api_proto_goTypes = []interface{}{
 	(*DeleteXtraDBClusterResponse)(nil),                                   // 9: percona.platform.dbaas.controller.v1beta1.DeleteXtraDBClusterResponse
 	(*RestartXtraDBClusterRequest)(nil),                                   // 10: percona.platform.dbaas.controller.v1beta1.RestartXtraDBClusterRequest
 	(*RestartXtraDBClusterResponse)(nil),                                  // 11: percona.platform.dbaas.controller.v1beta1.RestartXtraDBClusterResponse
-	(*ListXtraDBClustersResponse_Cluster)(nil),                            // 12: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse.Cluster
-	(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams)(nil),          // 13: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams
-	(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_PXC)(nil),      // 14: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.PXC
-	(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_ProxySQL)(nil), // 15: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.ProxySQL
-	(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_HAProxy)(nil),  // 16: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.HAProxy
-	(*KubeAuth)(nil),            // 17: percona.platform.dbaas.controller.v1beta1.KubeAuth
-	(*XtraDBCredentials)(nil),   // 18: percona.platform.dbaas.controller.v1beta1.XtraDBCredentials
-	(*XtraDBClusterParams)(nil), // 19: percona.platform.dbaas.controller.v1beta1.XtraDBClusterParams
-	(*PMMParams)(nil),           // 20: percona.platform.dbaas.controller.v1beta1.PMMParams
-	(XtraDBClusterState)(0),     // 21: percona.platform.dbaas.controller.v1beta1.XtraDBClusterState
-	(*RunningOperation)(nil),    // 22: percona.platform.dbaas.controller.v1beta1.RunningOperation
-	(*ComputeResources)(nil),    // 23: percona.platform.dbaas.controller.v1beta1.ComputeResources
+	(*GetInstalledPXCVersionRequest)(nil),                                 // 12: percona.platform.dbaas.controller.v1beta1.GetInstalledPXCVersionRequest
+	(*GetInstalledPXCVersionResponse)(nil),                                // 13: percona.platform.dbaas.controller.v1beta1.GetInstalledPXCVersionResponse
+	(*ListXtraDBClustersResponse_Cluster)(nil),                            // 14: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse.Cluster
+	(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams)(nil),          // 15: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams
+	(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_PXC)(nil),      // 16: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.PXC
+	(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_ProxySQL)(nil), // 17: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.ProxySQL
+	(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_HAProxy)(nil),  // 18: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.HAProxy
+	(*KubeAuth)(nil),            // 19: percona.platform.dbaas.controller.v1beta1.KubeAuth
+	(*XtraDBCredentials)(nil),   // 20: percona.platform.dbaas.controller.v1beta1.XtraDBCredentials
+	(*XtraDBClusterParams)(nil), // 21: percona.platform.dbaas.controller.v1beta1.XtraDBClusterParams
+	(*PMMParams)(nil),           // 22: percona.platform.dbaas.controller.v1beta1.PMMParams
+	(XtraDBClusterState)(0),     // 23: percona.platform.dbaas.controller.v1beta1.XtraDBClusterState
+	(*RunningOperation)(nil),    // 24: percona.platform.dbaas.controller.v1beta1.RunningOperation
+	(*ComputeResources)(nil),    // 25: percona.platform.dbaas.controller.v1beta1.ComputeResources
 }
 var file_controller_xtra_db_cluster_api_proto_depIdxs = []int32{
-	17, // 0: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
-	12, // 1: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse.clusters:type_name -> percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse.Cluster
-	17, // 2: percona.platform.dbaas.controller.v1beta1.GetXtraDBClusterCredentialsRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
-	18, // 3: percona.platform.dbaas.controller.v1beta1.GetXtraDBClusterCredentialsResponse.credentials:type_name -> percona.platform.dbaas.controller.v1beta1.XtraDBCredentials
-	17, // 4: percona.platform.dbaas.controller.v1beta1.CreateXtraDBClusterRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
-	19, // 5: percona.platform.dbaas.controller.v1beta1.CreateXtraDBClusterRequest.params:type_name -> percona.platform.dbaas.controller.v1beta1.XtraDBClusterParams
-	20, // 6: percona.platform.dbaas.controller.v1beta1.CreateXtraDBClusterRequest.pmm:type_name -> percona.platform.dbaas.controller.v1beta1.PMMParams
-	17, // 7: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
-	13, // 8: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.params:type_name -> percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams
-	17, // 9: percona.platform.dbaas.controller.v1beta1.DeleteXtraDBClusterRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
-	17, // 10: percona.platform.dbaas.controller.v1beta1.RestartXtraDBClusterRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
-	21, // 11: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse.Cluster.state:type_name -> percona.platform.dbaas.controller.v1beta1.XtraDBClusterState
-	22, // 12: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse.Cluster.operation:type_name -> percona.platform.dbaas.controller.v1beta1.RunningOperation
-	19, // 13: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse.Cluster.params:type_name -> percona.platform.dbaas.controller.v1beta1.XtraDBClusterParams
-	14, // 14: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.pxc:type_name -> percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.PXC
-	15, // 15: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.proxysql:type_name -> percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.ProxySQL
-	16, // 16: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.haproxy:type_name -> percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.HAProxy
-	23, // 17: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.PXC.compute_resources:type_name -> percona.platform.dbaas.controller.v1beta1.ComputeResources
-	23, // 18: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.ProxySQL.compute_resources:type_name -> percona.platform.dbaas.controller.v1beta1.ComputeResources
-	23, // 19: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.HAProxy.compute_resources:type_name -> percona.platform.dbaas.controller.v1beta1.ComputeResources
+	19, // 0: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
+	14, // 1: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse.clusters:type_name -> percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse.Cluster
+	19, // 2: percona.platform.dbaas.controller.v1beta1.GetXtraDBClusterCredentialsRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
+	20, // 3: percona.platform.dbaas.controller.v1beta1.GetXtraDBClusterCredentialsResponse.credentials:type_name -> percona.platform.dbaas.controller.v1beta1.XtraDBCredentials
+	19, // 4: percona.platform.dbaas.controller.v1beta1.CreateXtraDBClusterRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
+	21, // 5: percona.platform.dbaas.controller.v1beta1.CreateXtraDBClusterRequest.params:type_name -> percona.platform.dbaas.controller.v1beta1.XtraDBClusterParams
+	22, // 6: percona.platform.dbaas.controller.v1beta1.CreateXtraDBClusterRequest.pmm:type_name -> percona.platform.dbaas.controller.v1beta1.PMMParams
+	19, // 7: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
+	15, // 8: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.params:type_name -> percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams
+	19, // 9: percona.platform.dbaas.controller.v1beta1.DeleteXtraDBClusterRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
+	19, // 10: percona.platform.dbaas.controller.v1beta1.RestartXtraDBClusterRequest.kube_auth:type_name -> percona.platform.dbaas.controller.v1beta1.KubeAuth
+	23, // 11: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse.Cluster.state:type_name -> percona.platform.dbaas.controller.v1beta1.XtraDBClusterState
+	24, // 12: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse.Cluster.operation:type_name -> percona.platform.dbaas.controller.v1beta1.RunningOperation
+	21, // 13: percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse.Cluster.params:type_name -> percona.platform.dbaas.controller.v1beta1.XtraDBClusterParams
+	16, // 14: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.pxc:type_name -> percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.PXC
+	17, // 15: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.proxysql:type_name -> percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.ProxySQL
+	18, // 16: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.haproxy:type_name -> percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.HAProxy
+	25, // 17: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.PXC.compute_resources:type_name -> percona.platform.dbaas.controller.v1beta1.ComputeResources
+	25, // 18: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.ProxySQL.compute_resources:type_name -> percona.platform.dbaas.controller.v1beta1.ComputeResources
+	25, // 19: percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest.UpdateXtraDBClusterParams.HAProxy.compute_resources:type_name -> percona.platform.dbaas.controller.v1beta1.ComputeResources
 	0,  // 20: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.ListXtraDBClusters:input_type -> percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersRequest
 	2,  // 21: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.GetXtraDBClusterCredentials:input_type -> percona.platform.dbaas.controller.v1beta1.GetXtraDBClusterCredentialsRequest
 	4,  // 22: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.CreateXtraDBCluster:input_type -> percona.platform.dbaas.controller.v1beta1.CreateXtraDBClusterRequest
 	6,  // 23: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.UpdateXtraDBCluster:input_type -> percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterRequest
 	8,  // 24: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.DeleteXtraDBCluster:input_type -> percona.platform.dbaas.controller.v1beta1.DeleteXtraDBClusterRequest
 	10, // 25: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.RestartXtraDBCluster:input_type -> percona.platform.dbaas.controller.v1beta1.RestartXtraDBClusterRequest
-	1,  // 26: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.ListXtraDBClusters:output_type -> percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse
-	3,  // 27: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.GetXtraDBClusterCredentials:output_type -> percona.platform.dbaas.controller.v1beta1.GetXtraDBClusterCredentialsResponse
-	5,  // 28: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.CreateXtraDBCluster:output_type -> percona.platform.dbaas.controller.v1beta1.CreateXtraDBClusterResponse
-	7,  // 29: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.UpdateXtraDBCluster:output_type -> percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterResponse
-	9,  // 30: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.DeleteXtraDBCluster:output_type -> percona.platform.dbaas.controller.v1beta1.DeleteXtraDBClusterResponse
-	11, // 31: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.RestartXtraDBCluster:output_type -> percona.platform.dbaas.controller.v1beta1.RestartXtraDBClusterResponse
-	26, // [26:32] is the sub-list for method output_type
-	20, // [20:26] is the sub-list for method input_type
+	12, // 26: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.GetInstalledPXCVersion:input_type -> percona.platform.dbaas.controller.v1beta1.GetInstalledPXCVersionRequest
+	1,  // 27: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.ListXtraDBClusters:output_type -> percona.platform.dbaas.controller.v1beta1.ListXtraDBClustersResponse
+	3,  // 28: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.GetXtraDBClusterCredentials:output_type -> percona.platform.dbaas.controller.v1beta1.GetXtraDBClusterCredentialsResponse
+	5,  // 29: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.CreateXtraDBCluster:output_type -> percona.platform.dbaas.controller.v1beta1.CreateXtraDBClusterResponse
+	7,  // 30: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.UpdateXtraDBCluster:output_type -> percona.platform.dbaas.controller.v1beta1.UpdateXtraDBClusterResponse
+	9,  // 31: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.DeleteXtraDBCluster:output_type -> percona.platform.dbaas.controller.v1beta1.DeleteXtraDBClusterResponse
+	11, // 32: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.RestartXtraDBCluster:output_type -> percona.platform.dbaas.controller.v1beta1.RestartXtraDBClusterResponse
+	13, // 33: percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI.GetInstalledPXCVersion:output_type -> percona.platform.dbaas.controller.v1beta1.GetInstalledPXCVersionResponse
+	27, // [27:34] is the sub-list for method output_type
+	20, // [20:27] is the sub-list for method input_type
 	20, // [20:20] is the sub-list for extension type_name
 	20, // [20:20] is the sub-list for extension extendee
 	0,  // [0:20] is the sub-list for field type_name
@@ -1464,7 +1588,7 @@ func file_controller_xtra_db_cluster_api_proto_init() {
 			}
 		}
 		file_controller_xtra_db_cluster_api_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListXtraDBClustersResponse_Cluster); i {
+			switch v := v.(*GetInstalledPXCVersionRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1476,7 +1600,7 @@ func file_controller_xtra_db_cluster_api_proto_init() {
 			}
 		}
 		file_controller_xtra_db_cluster_api_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams); i {
+			switch v := v.(*GetInstalledPXCVersionResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1488,7 +1612,7 @@ func file_controller_xtra_db_cluster_api_proto_init() {
 			}
 		}
 		file_controller_xtra_db_cluster_api_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_PXC); i {
+			switch v := v.(*ListXtraDBClustersResponse_Cluster); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1500,7 +1624,7 @@ func file_controller_xtra_db_cluster_api_proto_init() {
 			}
 		}
 		file_controller_xtra_db_cluster_api_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_ProxySQL); i {
+			switch v := v.(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1512,6 +1636,30 @@ func file_controller_xtra_db_cluster_api_proto_init() {
 			}
 		}
 		file_controller_xtra_db_cluster_api_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_PXC); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_controller_xtra_db_cluster_api_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_ProxySQL); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_controller_xtra_db_cluster_api_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateXtraDBClusterRequest_UpdateXtraDBClusterParams_HAProxy); i {
 			case 0:
 				return &v.state
@@ -1530,7 +1678,7 @@ func file_controller_xtra_db_cluster_api_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_controller_xtra_db_cluster_api_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -1568,6 +1716,8 @@ type XtraDBClusterAPIClient interface {
 	DeleteXtraDBCluster(ctx context.Context, in *DeleteXtraDBClusterRequest, opts ...grpc.CallOption) (*DeleteXtraDBClusterResponse, error)
 	// RestartXtraDBCluster restarts XtraDB cluster.
 	RestartXtraDBCluster(ctx context.Context, in *RestartXtraDBClusterRequest, opts ...grpc.CallOption) (*RestartXtraDBClusterResponse, error)
+	// GetInstalledPXCVersion returns version of PXC in use.
+	GetInstalledPXCVersion(ctx context.Context, in *GetInstalledPXCVersionRequest, opts ...grpc.CallOption) (*GetInstalledPXCVersionResponse, error)
 }
 
 type xtraDBClusterAPIClient struct {
@@ -1632,6 +1782,15 @@ func (c *xtraDBClusterAPIClient) RestartXtraDBCluster(ctx context.Context, in *R
 	return out, nil
 }
 
+func (c *xtraDBClusterAPIClient) GetInstalledPXCVersion(ctx context.Context, in *GetInstalledPXCVersionRequest, opts ...grpc.CallOption) (*GetInstalledPXCVersionResponse, error) {
+	out := new(GetInstalledPXCVersionResponse)
+	err := c.cc.Invoke(ctx, "/percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI/GetInstalledPXCVersion", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // XtraDBClusterAPIServer is the server API for XtraDBClusterAPI service.
 type XtraDBClusterAPIServer interface {
 	// ListXtraDBClusters returns a list of XtraDB clusters.
@@ -1646,6 +1805,8 @@ type XtraDBClusterAPIServer interface {
 	DeleteXtraDBCluster(context.Context, *DeleteXtraDBClusterRequest) (*DeleteXtraDBClusterResponse, error)
 	// RestartXtraDBCluster restarts XtraDB cluster.
 	RestartXtraDBCluster(context.Context, *RestartXtraDBClusterRequest) (*RestartXtraDBClusterResponse, error)
+	// GetInstalledPXCVersion returns version of PXC in use.
+	GetInstalledPXCVersion(context.Context, *GetInstalledPXCVersionRequest) (*GetInstalledPXCVersionResponse, error)
 }
 
 // UnimplementedXtraDBClusterAPIServer can be embedded to have forward compatible implementations.
@@ -1669,6 +1830,9 @@ func (*UnimplementedXtraDBClusterAPIServer) DeleteXtraDBCluster(context.Context,
 }
 func (*UnimplementedXtraDBClusterAPIServer) RestartXtraDBCluster(context.Context, *RestartXtraDBClusterRequest) (*RestartXtraDBClusterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RestartXtraDBCluster not implemented")
+}
+func (*UnimplementedXtraDBClusterAPIServer) GetInstalledPXCVersion(context.Context, *GetInstalledPXCVersionRequest) (*GetInstalledPXCVersionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetInstalledPXCVersion not implemented")
 }
 
 func RegisterXtraDBClusterAPIServer(s *grpc.Server, srv XtraDBClusterAPIServer) {
@@ -1783,6 +1947,24 @@ func _XtraDBClusterAPI_RestartXtraDBCluster_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _XtraDBClusterAPI_GetInstalledPXCVersion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetInstalledPXCVersionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(XtraDBClusterAPIServer).GetInstalledPXCVersion(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI/GetInstalledPXCVersion",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(XtraDBClusterAPIServer).GetInstalledPXCVersion(ctx, req.(*GetInstalledPXCVersionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _XtraDBClusterAPI_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "percona.platform.dbaas.controller.v1beta1.XtraDBClusterAPI",
 	HandlerType: (*XtraDBClusterAPIServer)(nil),
@@ -1810,6 +1992,10 @@ var _XtraDBClusterAPI_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RestartXtraDBCluster",
 			Handler:    _XtraDBClusterAPI_RestartXtraDBCluster_Handler,
+		},
+		{
+			MethodName: "GetInstalledPXCVersion",
+			Handler:    _XtraDBClusterAPI_GetInstalledPXCVersion_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

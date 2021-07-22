@@ -204,3 +204,12 @@ func (this *RestartXtraDBClusterRequest) Validate() error {
 func (this *RestartXtraDBClusterResponse) Validate() error {
 	return nil
 }
+func (this *GetInstalledPXCVersionRequest) Validate() error {
+	if this.DbClusterName == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("DbClusterName", fmt.Errorf(`value '%v' must not be an empty string`, this.DbClusterName))
+	}
+	return nil
+}
+func (this *GetInstalledPXCVersionResponse) Validate() error {
+	return nil
+}
