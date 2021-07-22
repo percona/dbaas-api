@@ -648,8 +648,6 @@ func (*RestartXtraDBClusterResponse) Descriptor() ([]byte, []int) {
 	return file_controller_xtra_db_cluster_api_proto_rawDescGZIP(), []int{11}
 }
 
-// GetInstalledPXCVersionRequest is used for requesting installed version of database cluster.
-// Database type does not have to be included since we use this message in different services.
 type GetInstalledPXCVersionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -698,7 +696,6 @@ func (x *GetInstalledPXCVersionRequest) GetDbClusterName() string {
 	return ""
 }
 
-// GetInstalledPXCVersionResponse contains installed version of a database cluster.
 type GetInstalledPXCVersionResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

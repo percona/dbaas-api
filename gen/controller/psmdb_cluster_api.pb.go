@@ -648,8 +648,6 @@ func (*RestartPSMDBClusterResponse) Descriptor() ([]byte, []int) {
 	return file_controller_psmdb_cluster_api_proto_rawDescGZIP(), []int{11}
 }
 
-// GetInstalledPSMDBVersionRequest is used for requesting installed version of database cluster.
-// Database type does not have to be included since we use this message in different services.
 type GetInstalledPSMDBVersionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -698,7 +696,6 @@ func (x *GetInstalledPSMDBVersionRequest) GetDbClusterName() string {
 	return ""
 }
 
-// GetInstalledPSMDBVersionResponse contains installed version of a database cluster.
 type GetInstalledPSMDBVersionResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
