@@ -22,6 +22,8 @@ service PSMDBClusterAPI {
   rpc DeletePSMDBCluster(DeletePSMDBClusterRequest) returns (DeletePSMDBClusterResponse);
   // RestartPSMDBCluster restarts PSMDB cluster.
   rpc RestartPSMDBCluster(RestartPSMDBClusterRequest) returns (RestartPSMDBClusterResponse);
+  //
+
 }
 
 message ListPSMDBClustersRequest {
@@ -126,6 +128,8 @@ message UpdatePSMDBClusterRequest {
     bool suspend = 3;
     // Resume cluster `pause: false`.
     bool resume = 4;
+    // PSMDB Cluster version to trigger upgrade to.
+    string db_version = 5;
   }
   // Cluster parameters.
   UpdatePSMDBClusterParams params = 3;
