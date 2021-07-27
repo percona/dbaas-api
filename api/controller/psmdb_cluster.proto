@@ -64,6 +64,8 @@ message PSMDBClusterParams {
   ];
   // Docker image used for PSMDB.
   string image = 3;
+  // Version service URL.
+  string version_service_url = 4;
 }
 
 // PSMDBCredentials represents the credentials needed to connect to the cluster.

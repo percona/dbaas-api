@@ -98,6 +98,8 @@ message XtraDBClusterParams {
   ProxySQL proxysql = 3;
   // HAProxy container parameters.
   HAProxy haproxy = 4;
+  // Version service URL.
+  string version_service_url = 5;
 }
 
 // XtraDBCredentials is cluster connection credentials.
