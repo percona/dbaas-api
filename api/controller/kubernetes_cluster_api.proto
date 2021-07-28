@@ -15,6 +15,8 @@ service KubernetesClusterAPI {
   // GetResources returns the total amount of resources and the amount that is
   // still available for use in the Kubernetes cluster.
   rpc GetResources(GetResourcesRequest) returns (GetResourcesResponse);
+  // StartMonitoring sets up victoria metrics operator to monitor kubernetes cluster.
+  rpc StartMonitoring(StartMonitoringRequest) returns (StartMonitoringResponse);
 }
 
 message CheckKubernetesClusterConnectionRequest {
@@ -48,3 +50,20 @@ message GetResourcesResponse {
   // The amount of resources that is available for consumption by future Kubernetes workloads.
   Resources available = 2;
 }
+
+message StartMonitoringRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // PMM params.
+  PMMParams pmm = 2 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+}
+
+message StartMonitoringResponse {}
