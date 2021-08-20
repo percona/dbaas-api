@@ -21,6 +21,8 @@ enum XtraDBClusterState {
   XTRA_DB_CLUSTER_STATE_DELETING = 4;
   // XTRA_DB_CLUSTER_STATE_PAUSED represents a paused cluster state.
   XTRA_DB_CLUSTER_STATE_PAUSED = 5;
+  // XTRA_DB_CLUSTER_STATE_UPGRADING represents cluster state that is undergoing a upgrade.
+  XTRA_DB_CLUSTER_STATE_UPGRADING = 6;
 }
 
 // XtraDBBackupState represents XtraDB backup CR state.
