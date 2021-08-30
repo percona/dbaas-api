@@ -20,6 +20,12 @@ message InstallXtraDBOperatorRequest {
       msg_exists: true
     }
   ];
+  // Operator version to be installed.
+  string version = 2 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
 }
 
 message InstallXtraDBOperatorResponse {}
