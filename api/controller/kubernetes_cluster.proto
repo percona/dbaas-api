@@ -4,18 +4,6 @@ package percona.platform.dbaas.controller.v1beta1;
 
 option go_package = "controller;controllerv1beta1";
 
-// OperatorsStatus defines status of operators installed in Kubernetes cluster.
-enum OperatorsStatus {
-  // OPERATORS_STATUS_INVALID represents unknown state.
-  OPERATORS_STATUS_INVALID = 0;
-  // OPERATORS_STATUS_OK represents that operators are installed and have supported API version.
-  OPERATORS_STATUS_OK = 1;
-  // OPERATORS_STATUS_UNSUPPORTED represents that operators are installed, but doesn't have supported API version.
-  OPERATORS_STATUS_UNSUPPORTED = 2;
-  // OPERATORS_STATUS_NOT_INSTALLED represents that operators are not installed.
-  OPERATORS_STATUS_NOT_INSTALLED = 3;
-}
-
 // KubernetesClusterStatus defines status of Kubernetes cluster.
 enum KubernetesClusterStatus {
   // KUBERNETES_CLUSTER_STATUS_INVALID represents unknown state.
@@ -26,20 +14,12 @@ enum KubernetesClusterStatus {
   KUBERNETES_CLUSTER_STATUS_UNAVAILABLE = 2;
 }
 
-// Operator contains all information about operator installed in Kubernetes cluster.
-message Operator {
-  // Status of the operator.
-  OperatorsStatus status = 1;
-  // Installed version.
-  string version = 2;
-}
-
 // Operators contains list of operators installed in Kubernetes cluster.
 message Operators {
-  // Percona XtraDB Cluster Operator.
-  Operator xtradb = 1;
-  // Percona Server for MongoDB Operator.
-  Operator psmdb = 2;
+  // Percona XtraDB Cluster Operator Version.
+  string xtradb_operator_version = 1;
+  // Percona Server for MongoDB Operator Version.
+  string psmdb_operator_version = 2;
 }
 
 // Resources contains Kubernetes cluster resources.
