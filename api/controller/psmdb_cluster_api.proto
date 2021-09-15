@@ -46,8 +46,8 @@ message ListPSMDBClustersResponse {
     PSMDBClusterParams params = 4;
     // DB cluster accessible outside of K8s cluster.
     bool exposed = 5;
-    // Installed PSMDB version.
-    string installed_version = 6;
+    // Docker image used in the cluster. Version of the MongoDB is included in the image tag.
+    string image = 6;
   }
   // PSMDB clusters information.
   repeated Cluster clusters = 1;
