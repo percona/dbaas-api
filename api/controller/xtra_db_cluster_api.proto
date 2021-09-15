@@ -46,8 +46,6 @@ message ListXtraDBClustersResponse {
     XtraDBClusterParams params = 4;
     // DB cluster accessible outside of K8s cluster.
     bool exposed = 5;
-    // Docker image used in the cluster. Version of the XtraDB is included in the image tag.
-    string image = 6;
   }
   // XtraDB clusters information.
   repeated Cluster clusters = 1;
