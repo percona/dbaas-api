@@ -43,7 +43,7 @@ const (
 	PSMDBClusterState_PSMDB_CLUSTER_STATE_DELETING PSMDBClusterState = 4
 	// PSMDB_CLUSTER_STATE_PAUSED represents a paused cluster state.
 	PSMDBClusterState_PSMDB_CLUSTER_STATE_PAUSED PSMDBClusterState = 5
-	// PSMDB_CLUSTER_STATE_UPGRADING represents cluster state that is undergoing a upgrade.
+	// PSMDB_CLUSTER_STATE_UPGRADING represents cluster state that is undergoing an upgrade.
 	PSMDBClusterState_PSMDB_CLUSTER_STATE_UPGRADING PSMDBClusterState = 6
 )
 
