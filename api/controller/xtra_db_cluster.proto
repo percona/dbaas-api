@@ -21,7 +21,7 @@ enum XtraDBClusterState {
   XTRA_DB_CLUSTER_STATE_DELETING = 4;
   // XTRA_DB_CLUSTER_STATE_PAUSED represents a paused cluster state.
   XTRA_DB_CLUSTER_STATE_PAUSED = 5;
-  // XTRA_DB_CLUSTER_STATE_UPGRADING represents cluster state that is undergoing a upgrade.
+  // XTRA_DB_CLUSTER_STATE_UPGRADING represents cluster state that is undergoing an upgrade.
   XTRA_DB_CLUSTER_STATE_UPGRADING = 6;
 }
 
@@ -100,7 +100,8 @@ message XtraDBClusterParams {
   ProxySQL proxysql = 3;
   // HAProxy container parameters.
   HAProxy haproxy = 4;
-  // Version service URL.
+  // Version service URL. We need to pass the URL because operators use it to fetch information about versions during upgrade.
+  // We want the URL to match the one used in pmm-managed because we can use custom version service.
   string version_service_url = 5;
 }
 

@@ -165,7 +165,8 @@ type PSMDBClusterParams struct {
 	Replicaset *PSMDBClusterParams_ReplicaSet `protobuf:"bytes,2,opt,name=replicaset,proto3" json:"replicaset,omitempty"`
 	// Docker image used for PSMDB.
 	Image string `protobuf:"bytes,3,opt,name=image,proto3" json:"image,omitempty"`
-	// Version service URL.
+	// Version service URL. We need to pass the URL because operators use it to fetch information about versions during upgrade.
+	// We want the URL to match the one used in pmm-managed because we can use custom version service.
 	VersionServiceUrl string `protobuf:"bytes,4,opt,name=version_service_url,json=versionServiceUrl,proto3" json:"version_service_url,omitempty"`
 }
 

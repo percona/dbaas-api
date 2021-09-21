@@ -43,7 +43,7 @@ const (
 	XtraDBClusterState_XTRA_DB_CLUSTER_STATE_DELETING XtraDBClusterState = 4
 	// XTRA_DB_CLUSTER_STATE_PAUSED represents a paused cluster state.
 	XtraDBClusterState_XTRA_DB_CLUSTER_STATE_PAUSED XtraDBClusterState = 5
-	// XTRA_DB_CLUSTER_STATE_UPGRADING represents cluster state that is undergoing a upgrade.
+	// XTRA_DB_CLUSTER_STATE_UPGRADING represents cluster state that is undergoing an upgrade.
 	XtraDBClusterState_XTRA_DB_CLUSTER_STATE_UPGRADING XtraDBClusterState = 6
 )
 
@@ -168,7 +168,8 @@ type XtraDBClusterParams struct {
 	Proxysql *XtraDBClusterParams_ProxySQL `protobuf:"bytes,3,opt,name=proxysql,proto3" json:"proxysql,omitempty"`
 	// HAProxy container parameters.
 	Haproxy *XtraDBClusterParams_HAProxy `protobuf:"bytes,4,opt,name=haproxy,proto3" json:"haproxy,omitempty"`
-	// Version service URL.
+	// Version service URL. We need to pass the URL because operators use it to fetch information about versions during upgrade.
+	// We want the URL to match the one used in pmm-managed because we can use custom version service.
 	VersionServiceUrl string `protobuf:"bytes,5,opt,name=version_service_url,json=versionServiceUrl,proto3" json:"version_service_url,omitempty"`
 }
 
