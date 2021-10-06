@@ -117,6 +117,8 @@ message UpdateXtraDBClusterRequest {
     message PXC {
       // Requested compute resources.
       ComputeResources compute_resources = 1;
+      // PXC image, tag contains version to upgrade to.
+      string image = 2;
     }
     // ProxySQL container parameters.
     message ProxySQL {

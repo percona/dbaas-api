@@ -21,6 +21,8 @@ enum PSMDBClusterState {
   PSMDB_CLUSTER_STATE_DELETING = 4;
   // PSMDB_CLUSTER_STATE_PAUSED represents a paused cluster state.
   PSMDB_CLUSTER_STATE_PAUSED = 5;
+  // PSMDB_CLUSTER_STATE_UPGRADING represents cluster state that is undergoing an upgrade.
+  PSMDB_CLUSTER_STATE_UPGRADING = 6;
 }
 
 // PSMDBBackupState represents PSMDB backup CR state.
@@ -64,6 +66,9 @@ message PSMDBClusterParams {
   ];
   // Docker image used for PSMDB.
   string image = 3;
+  // Version service URL. We need to pass the URL because operators use it to fetch information about versions during upgrade.
+  // We want the URL to match the one used in pmm-managed because we can use custom version service.
+  string version_service_url = 4;
 }
 
 // PSMDBCredentials represents the credentials needed to connect to the cluster.

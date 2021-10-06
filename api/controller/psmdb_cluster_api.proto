@@ -126,6 +126,8 @@ message UpdatePSMDBClusterRequest {
     bool suspend = 3;
     // Resume cluster `pause: false`.
     bool resume = 4;
+    // PSMDB image, tag contains version to upgrade to.
+    string image = 5;
   }
   // Cluster parameters.
   UpdatePSMDBClusterParams params = 3;
