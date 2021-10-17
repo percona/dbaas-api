@@ -21,6 +21,8 @@ enum PXCClusterState {
   PXC_CLUSTER_STATE_DELETING = 4;
   // PXC_CLUSTER_STATE_PAUSED represents a paused cluster state.
   PXC_CLUSTER_STATE_PAUSED = 5;
+  // PXC_CLUSTER_STATE_UPGRADING represents cluster state that is undergoing an upgrade.
+  PXC_CLUSTER_STATE_UPGRADING = 6;
 }
 
 // PXCBackupState represents PXC backup CR state.
@@ -98,6 +100,9 @@ message PXCClusterParams {
   ProxySQL proxysql = 3;
   // HAProxy container parameters.
   HAProxy haproxy = 4;
+  // Version service URL. We need to pass the URL because operators use it to fetch information about versions during upgrade.
+  // We want the URL to match the one used in pmm-managed because we can use custom version service.
+  string version_service_url = 5;
 }
 
 // PXCCredentials is cluster connection credentials.
