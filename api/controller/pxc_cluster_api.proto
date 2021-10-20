@@ -39,7 +39,7 @@ message ListPXCClustersResponse {
     // Cluster name.
     string name = 1;
     // Cluster state.
-    PXCClusterState state = 2;
+    DBClusterState state = 2;
     // Currently running operation, if any.
     RunningOperation operation = 3;
     // Cluster parameters.
