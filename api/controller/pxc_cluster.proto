@@ -7,40 +7,22 @@ option go_package = "controller;controllerv1beta1";
 import "controller/common.proto";
 import "github.com/mwitkow/go-proto-validators/validator.proto";
 
-// XtraDBClusterState represents XtraDB cluster CR state.
-enum XtraDBClusterState {
-  // XTRA_DB_CLUSTER_STATE_INVALID represents unknown state.
-  XTRA_DB_CLUSTER_STATE_INVALID = 0;
-  // XTRA_DB_CLUSTER_STATE_CHANGING represents a cluster being changed (initializing).
-  XTRA_DB_CLUSTER_STATE_CHANGING = 1;
-  // XTRA_DB_CLUSTER_STATE_READY represents a cluster without pending changes (ready).
-  XTRA_DB_CLUSTER_STATE_READY = 2;
-  // XTRA_DB_CLUSTER_STATE_FAILED represents a failed cluster (error).
-  XTRA_DB_CLUSTER_STATE_FAILED = 3;
-  // XTRA_DB_CLUSTER_STATE_DELETING represents a cluster being deleting.
-  XTRA_DB_CLUSTER_STATE_DELETING = 4;
-  // XTRA_DB_CLUSTER_STATE_PAUSED represents a paused cluster state.
-  XTRA_DB_CLUSTER_STATE_PAUSED = 5;
-  // XTRA_DB_CLUSTER_STATE_UPGRADING represents cluster state that is undergoing an upgrade.
-  XTRA_DB_CLUSTER_STATE_UPGRADING = 6;
+// PXCBackupState represents PXC backup CR state.
+enum PXCBackupState {
+  // PXC_BACKUP_STATE_INVALID represents unknown state.
+  PXC_BACKUP_STATE_INVALID = 0;
+  // PXC_BACKUP_STATE_RUNNING represents running backup (Starting, Running, FIXME check it).
+  PXC_BACKUP_STATE_RUNNING = 1;
+  // PXC_BACKUP_STATE_SUCCEEDED represents succeeded backup (Succeeded, FIXME check it).
+  PXC_BACKUP_STATE_SUCCEEDED = 2;
+  // PXC_BACKUP_STATE_FAILED represents failed backup (Failed, FIXME check it).
+  PXC_BACKUP_STATE_FAILED = 3;
 }
 
-// XtraDBBackupState represents XtraDB backup CR state.
-enum XtraDBBackupState {
-  // XTRA_DB_BACKUP_STATE_INVALID represents unknown state.
-  XTRA_DB_BACKUP_STATE_INVALID = 0;
-  // XTRA_DB_BACKUP_STATE_RUNNING represents running backup (Starting, Running, FIXME check it).
-  XTRA_DB_BACKUP_STATE_RUNNING = 1;
-  // XTRA_DB_BACKUP_STATE_SUCCEEDED represents succeeded backup (Succeeded, FIXME check it).
-  XTRA_DB_BACKUP_STATE_SUCCEEDED = 2;
-  // XTRA_DB_BACKUP_STATE_FAILED represents failed backup (Failed, FIXME check it).
-  XTRA_DB_BACKUP_STATE_FAILED = 3;
-}
+// TODO PXCRestoreState
 
-// TODO XtraDBRestoreState
-
-// XtraDBClusterParams represents XtraDB cluster parameters that can be updated.
-message XtraDBClusterParams {
+// PXCClusterParams represents PXC cluster parameters that can be updated.
+message PXCClusterParams {
   // PXC container parameters.
   message PXC {
     // Docker image used for PXC.
@@ -105,8 +87,8 @@ message XtraDBClusterParams {
   string version_service_url = 5;
 }
 
-// XtraDBCredentials is cluster connection credentials.
-message XtraDBCredentials {
+// PXCCredentials is cluster connection credentials.
+message PXCCredentials {
   // PXC host.
   string host = 1;
   // PXC port.

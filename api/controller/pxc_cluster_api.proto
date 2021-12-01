@@ -5,26 +5,26 @@ package percona.platform.dbaas.controller.v1beta1;
 option go_package = "controller;controllerv1beta1";
 
 import "controller/common.proto";
-import "controller/xtra_db_cluster.proto";
+import "controller/pxc_cluster.proto";
 import "github.com/mwitkow/go-proto-validators/validator.proto";
 
-// XtraDBClusterAPI provides APIs for managing XtraDB clusters.
-service XtraDBClusterAPI {
-  // ListXtraDBClusters returns a list of XtraDB clusters.
-  rpc ListXtraDBClusters(ListXtraDBClustersRequest) returns (ListXtraDBClustersResponse);
-  // GetXtraDBClusterCredentials gets a cluster's connection credentials.
-  rpc GetXtraDBClusterCredentials(GetXtraDBClusterCredentialsRequest) returns (GetXtraDBClusterCredentialsResponse);
-  // CreateXtraDBCluster creates a new XtraDB cluster.
-  rpc CreateXtraDBCluster(CreateXtraDBClusterRequest) returns (CreateXtraDBClusterResponse);
-  // UpdateXtraDBCluster updates existing XtraDB cluster.
-  rpc UpdateXtraDBCluster(UpdateXtraDBClusterRequest) returns (UpdateXtraDBClusterResponse);
-  // DeleteXtraDBCluster deletes XtraDB cluster.
-  rpc DeleteXtraDBCluster(DeleteXtraDBClusterRequest) returns (DeleteXtraDBClusterResponse);
-  // RestartXtraDBCluster restarts XtraDB cluster.
-  rpc RestartXtraDBCluster(RestartXtraDBClusterRequest) returns (RestartXtraDBClusterResponse);
+// PXCClusterAPI provides APIs for managing PXC clusters.
+service PXCClusterAPI {
+  // ListPXCClusters returns a list of PXC clusters.
+  rpc ListPXCClusters(ListPXCClustersRequest) returns (ListPXCClustersResponse);
+  // GetPXCClusterCredentials gets a cluster's connection credentials.
+  rpc GetPXCClusterCredentials(GetPXCClusterCredentialsRequest) returns (GetPXCClusterCredentialsResponse);
+  // CreatePXCCluster creates a new PXC cluster.
+  rpc CreatePXCCluster(CreatePXCClusterRequest) returns (CreatePXCClusterResponse);
+  // UpdatePXCCluster updates existing PXC cluster.
+  rpc UpdatePXCCluster(UpdatePXCClusterRequest) returns (UpdatePXCClusterResponse);
+  // DeletePXCCluster deletes PXC cluster.
+  rpc DeletePXCCluster(DeletePXCClusterRequest) returns (DeletePXCClusterResponse);
+  // RestartPXCCluster restarts PXC cluster.
+  rpc RestartPXCCluster(RestartPXCClusterRequest) returns (RestartPXCClusterResponse);
 }
 
-message ListXtraDBClustersRequest {
+message ListPXCClustersRequest {
   // Kubernetes auth.
   KubeAuth kube_auth = 1 [
     (validator.field) = {
@@ -33,25 +33,25 @@ message ListXtraDBClustersRequest {
   ];
 }
 
-message ListXtraDBClustersResponse {
-  // Cluster represents XtraDB cluster information.
+message ListPXCClustersResponse {
+  // Cluster represents PXC cluster information.
   message Cluster {
     // Cluster name.
     string name = 1;
     // Cluster state.
-    XtraDBClusterState state = 2;
+    DBClusterState state = 2;
     // Currently running operation, if any.
     RunningOperation operation = 3;
     // Cluster parameters.
-    XtraDBClusterParams params = 4;
+    PXCClusterParams params = 4;
     // DB cluster accessible outside of K8s cluster.
     bool exposed = 5;
   }
-  // XtraDB clusters information.
+  // PXC clusters information.
   repeated Cluster clusters = 1;
 }
 
-message GetXtraDBClusterCredentialsRequest {
+message GetPXCClusterCredentialsRequest {
   // Kubernetes auth.
   KubeAuth kube_auth = 1 [
     (validator.field) = {
@@ -66,12 +66,12 @@ message GetXtraDBClusterCredentialsRequest {
   ];
 }
 
-message GetXtraDBClusterCredentialsResponse {
+message GetPXCClusterCredentialsResponse {
   // Connection hostname and credentials.
-  XtraDBCredentials credentials = 1;
+  PXCCredentials credentials = 1;
 }
 
-message CreateXtraDBClusterRequest {
+message CreatePXCClusterRequest {
   // Kubernetes auth.
   KubeAuth kube_auth = 1 [
     (validator.field) = {
@@ -85,7 +85,7 @@ message CreateXtraDBClusterRequest {
     }
   ];
   // Cluster parameters.
-  XtraDBClusterParams params = 3 [
+  PXCClusterParams params = 3 [
     (validator.field) = {
       msg_exists: true
     }
@@ -96,9 +96,9 @@ message CreateXtraDBClusterRequest {
   bool expose = 6;
 }
 
-message CreateXtraDBClusterResponse {}
+message CreatePXCClusterResponse {}
 
-message UpdateXtraDBClusterRequest {
+message UpdatePXCClusterRequest {
   // Kubernetes auth.
   KubeAuth kube_auth = 1 [
     (validator.field) = {
@@ -111,8 +111,8 @@ message UpdateXtraDBClusterRequest {
       string_not_empty: true
     }
   ];
-  // UpdateXtraDBClusterParams represents XtraDB cluster parameters that can be updated.
-  message UpdateXtraDBClusterParams {
+  // UpdatePXCClusterParams represents PXC cluster parameters that can be updated.
+  message UpdatePXCClusterParams {
     // PXC container parameters.
     message PXC {
       // Requested compute resources.
@@ -144,16 +144,16 @@ message UpdateXtraDBClusterRequest {
     HAProxy haproxy = 7;
   }
   // Cluster parameters.
-  UpdateXtraDBClusterParams params = 3 [
+  UpdatePXCClusterParams params = 3 [
     (validator.field) = {
       msg_exists: true
     }
   ];
 }
 
-message UpdateXtraDBClusterResponse {}
+message UpdatePXCClusterResponse {}
 
-message DeleteXtraDBClusterRequest {
+message DeletePXCClusterRequest {
   // Kubernetes auth.
   KubeAuth kube_auth = 1 [
     (validator.field) = {
@@ -168,9 +168,9 @@ message DeleteXtraDBClusterRequest {
   ];
 }
 
-message DeleteXtraDBClusterResponse {}
+message DeletePXCClusterResponse {}
 
-message RestartXtraDBClusterRequest {
+message RestartPXCClusterRequest {
   // Kubernetes auth.
   KubeAuth kube_auth = 1 [
     (validator.field) = {
@@ -185,4 +185,4 @@ message RestartXtraDBClusterRequest {
   ];
 }
 
-message RestartXtraDBClusterResponse {}
+message RestartPXCClusterResponse {}

@@ -16,8 +16,8 @@ enum KubernetesClusterStatus {
 
 // Operators contains list of operators installed in Kubernetes cluster.
 message Operators {
-  // Percona XtraDB Cluster Operator Version.
-  string xtradb_operator_version = 1;
+  // Percona PXC Cluster Operator Version.
+  string pxc_operator_version = 1;
   // Percona Server for MongoDB Operator Version.
   string psmdb_operator_version = 2;
 }
