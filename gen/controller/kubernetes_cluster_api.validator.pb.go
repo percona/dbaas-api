@@ -82,3 +82,17 @@ func (this *StartMonitoringRequest) Validate() error {
 func (this *StartMonitoringResponse) Validate() error {
 	return nil
 }
+func (this *StopMonitoringRequest) Validate() error {
+	if nil == this.KubeAuth {
+		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
+	}
+	if this.KubeAuth != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.KubeAuth); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
+		}
+	}
+	return nil
+}
+func (this *StopMonitoringResponse) Validate() error {
+	return nil
+}
