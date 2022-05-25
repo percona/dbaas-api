@@ -17,6 +17,8 @@ service KubernetesClusterAPI {
   rpc GetResources(GetResourcesRequest) returns (GetResourcesResponse);
   // StartMonitoring sets up victoria metrics operator to monitor kubernetes cluster.
   rpc StartMonitoring(StartMonitoringRequest) returns (StartMonitoringResponse);
+  // StopMonitoring removes VM operator from the kubernetes cluster.
+  rpc StopMonitoring(StopMonitoringRequest) returns (StopMonitoringResponse);
 }
 
 message CheckKubernetesClusterConnectionRequest {
@@ -67,3 +69,14 @@ message StartMonitoringRequest {
 }
 
 message StartMonitoringResponse {}
+
+message StopMonitoringRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+}
+
+message StopMonitoringResponse {}
