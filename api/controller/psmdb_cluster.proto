@@ -51,6 +51,8 @@ message PSMDBClusterParams {
   // Version service URL. We need to pass the URL because operators use it to fetch information about versions during upgrade.
   // We want the URL to match the one used in pmm-managed because we can use custom version service.
   string version_service_url = 4;
+  // PSMDB Backup image.
+  string backup_image = 5;
 }
 
 // PSMDBCredentials represents the credentials needed to connect to the cluster.
