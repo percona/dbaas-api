@@ -12,6 +12,8 @@ import "github.com/mwitkow/go-proto-validators/validator.proto";
 service PXCClusterAPI {
   // ListPXCClusters returns a list of PXC clusters.
   rpc ListPXCClusters(ListPXCClustersRequest) returns (ListPXCClustersResponse);
+  // GetPXCCluster gets a cluster's current status.
+  rpc GetPXCCluster(GetPXCClusterRequest) returns (GetPXCClusterResponse);
   // GetPXCClusterCredentials gets a cluster's connection credentials.
   rpc GetPXCClusterCredentials(GetPXCClusterCredentialsRequest) returns (GetPXCClusterCredentialsResponse);
   // CreatePXCCluster creates a new PXC cluster.
@@ -34,21 +36,28 @@ message ListPXCClustersRequest {
 }
 
 message ListPXCClustersResponse {
-  // Cluster represents PXC cluster information.
-  message Cluster {
-    // Cluster name.
-    string name = 1;
-    // Cluster state.
-    DBClusterState state = 2;
-    // Currently running operation, if any.
-    RunningOperation operation = 3;
-    // Cluster parameters.
-    PXCClusterParams params = 4;
-    // DB cluster accessible outside of K8s cluster.
-    bool exposed = 5;
-  }
   // PXC clusters information.
-  repeated Cluster clusters = 1;
+  repeated PXCCluster clusters = 1;
+}
+
+message GetPXCClusterRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Cluster name.
+  string name = 2 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+}
+
+message GetPXCClusterResponse {
+  // PXC cluster information.
+  PXCCluster cluster = 1;
 }
 
 message GetPXCClusterCredentialsRequest {

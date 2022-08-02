@@ -12,6 +12,8 @@ import "github.com/mwitkow/go-proto-validators/validator.proto";
 service PSMDBClusterAPI {
   // ListPSMDBClusters returns a list of PSMDB clusters.
   rpc ListPSMDBClusters(ListPSMDBClustersRequest) returns (ListPSMDBClustersResponse);
+  // GetPSMDBCluster gets a cluster's information.
+  rpc GetPSMDBCluster(GetPSMDBClusterRequest) returns (GetPSMDBClusterResponse);
   // GetPSMDBClusterCredentials gets a cluster's connection credentials.
   rpc GetPSMDBClusterCredentials(GetPSMDBClusterCredentialsRequest) returns (GetPSMDBClusterCredentialsResponse);
   // CreatePSMDBCluster creates a new PSMDB cluster.
@@ -34,21 +36,28 @@ message ListPSMDBClustersRequest {
 }
 
 message ListPSMDBClustersResponse {
-  // Cluster represents PSMDB cluster information.
-  message Cluster {
-    // Cluster name.
-    string name = 1;
-    // Cluster state.
-    DBClusterState state = 2;
-    // Currently running operation, if any.
-    RunningOperation operation = 3;
-    // Cluster parameters.
-    PSMDBClusterParams params = 4;
-    // DB cluster accessible outside of K8s cluster.
-    bool exposed = 5;
-  }
   // PSMDB clusters information.
-  repeated Cluster clusters = 1;
+  repeated PSMDBCluster clusters = 1;
+}
+
+message GetPSMDBClusterRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Cluster name.
+  string name = 2 [
+    (validator.field) = {
+      string_not_empty: true
+    }
+  ];
+}
+
+message GetPSMDBClusterResponse {
+  // PSMDB cluster information.
+  PSMDBCluster cluster = 1;
 }
 
 message GetPSMDBClusterCredentialsRequest {

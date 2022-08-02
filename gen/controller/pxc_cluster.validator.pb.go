@@ -77,6 +77,19 @@ func (this *PXCClusterParams_HAProxy) Validate() error {
 	}
 	return nil
 }
+func (this *PXCCluster) Validate() error {
+	if this.Operation != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Operation); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Operation", err)
+		}
+	}
+	if this.Params != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Params); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Params", err)
+		}
+	}
+	return nil
+}
 func (this *PXCCredentials) Validate() error {
 	return nil
 }

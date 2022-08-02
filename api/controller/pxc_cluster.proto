@@ -87,6 +87,20 @@ message PXCClusterParams {
   string version_service_url = 5;
 }
 
+// PXCCluster represents PXC cluster information.
+message PXCCluster {
+  // Cluster name.
+  string name = 1;
+  // Cluster state.
+  DBClusterState state = 2;
+  // Currently running operation, if any.
+  RunningOperation operation = 3;
+  // Cluster parameters.
+  PXCClusterParams params = 4;
+  // DB cluster accessible outside of K8s cluster.
+  bool exposed = 5;
+}
+
 // PXCCredentials is cluster connection credentials.
 message PXCCredentials {
   // PXC host.
