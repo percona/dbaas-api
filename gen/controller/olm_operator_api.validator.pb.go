@@ -31,3 +31,17 @@ func (this *InstallOLMOperatorRequest) Validate() error {
 func (this *InstallOLMOperatorResponse) Validate() error {
 	return nil
 }
+func (this *InstallOperatorRequest) Validate() error {
+	if nil == this.KubeAuth {
+		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
+	}
+	if this.KubeAuth != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.KubeAuth); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
+		}
+	}
+	return nil
+}
+func (this *InstallOperatorResponse) Validate() error {
+	return nil
+}
