@@ -11,8 +11,11 @@ import "github.com/mwitkow/go-proto-validators/validator.proto";
 service OLMOperatorAPI {
   // InstallOLMOperator installs the OLM.
   rpc InstallOLMOperator(InstallOLMOperatorRequest) returns (InstallOLMOperatorResponse);
+  // InstallOperator installs an operator usin OLM.
+  rpc InstallOperator(InstallOperatorRequest) returns (InstallOperatorResponse);
 }
 
+// InstallOLMOperatorRequest has the necesary fields to start an OLM operator installation.
 message InstallOLMOperatorRequest {
   // Kubernetes auth.
   KubeAuth kube_auth = 1 [
@@ -24,4 +27,35 @@ message InstallOLMOperatorRequest {
   string version = 2;
 }
 
+// InstallOLMOperatorResponse is the OLM Operator installation response.
 message InstallOLMOperatorResponse {}
+
+// InstallOperatorRequest holds the necesary fields to request an operator installation
+// usin the OLM operator.
+message InstallOperatorRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Destination namespace.
+  string namespace = 2;
+  // Operator's name.
+  string name = 3;
+  // Operator group to create.
+  string operator_group = 4;
+  //  Catalog source name.
+  string catalog_source = 5;
+  // Catalog source namespace.
+  string catalog_source_namespace = 6;
+  // Channel.
+  string channel = 7;
+  // Install approval type. Manual, Automatic.
+  string install_plan_approval = 8;
+  // Starting CSV.
+  string starting_csv = 9;
+}
+
+// InstallOperatorResponse holds the response after installing an operator via OLM.
+message InstallOperatorResponse {}
