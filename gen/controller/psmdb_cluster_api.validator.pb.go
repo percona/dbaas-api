@@ -18,12 +18,11 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 func (this *ListPSMDBClustersRequest) Validate() error {
-	if nil == this.KubeAuth {
-		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
-	}
-	if this.KubeAuth != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.KubeAuth); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
+	if oneOfNester, ok := this.GetProvisioner().(*ListPSMDBClustersRequest_EksProvisioner); ok {
+		if oneOfNester.EksProvisioner != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(oneOfNester.EksProvisioner); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("EksProvisioner", err)
+			}
 		}
 	}
 	return nil
