@@ -96,3 +96,9 @@ func (this *StopMonitoringRequest) Validate() error {
 func (this *StopMonitoringResponse) Validate() error {
 	return nil
 }
+func (this *GetKubeconfigRequest) Validate() error {
+	return nil
+}
+func (this *GetKubeconfigResponse) Validate() error {
+	return nil
+}
