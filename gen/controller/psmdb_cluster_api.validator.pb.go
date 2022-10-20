@@ -51,12 +51,11 @@ func (this *ListPSMDBClustersResponse_Cluster) Validate() error {
 	return nil
 }
 func (this *GetPSMDBClusterCredentialsRequest) Validate() error {
-	if nil == this.KubeAuth {
-		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
-	}
-	if this.KubeAuth != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.KubeAuth); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
+	if oneOfNester, ok := this.GetProvisioner().(*GetPSMDBClusterCredentialsRequest_EksProvisioner); ok {
+		if oneOfNester.EksProvisioner != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(oneOfNester.EksProvisioner); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("EksProvisioner", err)
+			}
 		}
 	}
 	if this.Name == "" {
@@ -73,12 +72,11 @@ func (this *GetPSMDBClusterCredentialsResponse) Validate() error {
 	return nil
 }
 func (this *CreatePSMDBClusterRequest) Validate() error {
-	if nil == this.KubeAuth {
-		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
-	}
-	if this.KubeAuth != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.KubeAuth); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
+	if oneOfNester, ok := this.GetProvisioner().(*CreatePSMDBClusterRequest_EksProvisioner); ok {
+		if oneOfNester.EksProvisioner != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(oneOfNester.EksProvisioner); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("EksProvisioner", err)
+			}
 		}
 	}
 	if this.Name == "" {
@@ -103,12 +101,11 @@ func (this *CreatePSMDBClusterResponse) Validate() error {
 	return nil
 }
 func (this *UpdatePSMDBClusterRequest) Validate() error {
-	if nil == this.KubeAuth {
-		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
-	}
-	if this.KubeAuth != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.KubeAuth); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
+	if oneOfNester, ok := this.GetProvisioner().(*UpdatePSMDBClusterRequest_EksProvisioner); ok {
+		if oneOfNester.EksProvisioner != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(oneOfNester.EksProvisioner); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("EksProvisioner", err)
+			}
 		}
 	}
 	if this.Name == "" {
@@ -141,12 +138,11 @@ func (this *UpdatePSMDBClusterResponse) Validate() error {
 	return nil
 }
 func (this *DeletePSMDBClusterRequest) Validate() error {
-	if nil == this.KubeAuth {
-		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
-	}
-	if this.KubeAuth != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.KubeAuth); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
+	if oneOfNester, ok := this.GetProvisioner().(*DeletePSMDBClusterRequest_EksProvisioner); ok {
+		if oneOfNester.EksProvisioner != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(oneOfNester.EksProvisioner); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("EksProvisioner", err)
+			}
 		}
 	}
 	if this.Name == "" {
@@ -158,12 +154,11 @@ func (this *DeletePSMDBClusterResponse) Validate() error {
 	return nil
 }
 func (this *RestartPSMDBClusterRequest) Validate() error {
-	if nil == this.KubeAuth {
-		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
-	}
-	if this.KubeAuth != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.KubeAuth); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
+	if oneOfNester, ok := this.GetProvisioner().(*RestartPSMDBClusterRequest_EksProvisioner); ok {
+		if oneOfNester.EksProvisioner != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(oneOfNester.EksProvisioner); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("EksProvisioner", err)
+			}
 		}
 	}
 	if this.Name == "" {

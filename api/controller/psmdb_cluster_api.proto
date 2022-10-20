@@ -52,12 +52,11 @@ message ListPSMDBClustersResponse {
 }
 
 message GetPSMDBClusterCredentialsRequest {
-  // Kubernetes auth.
-  KubeAuth kube_auth = 1 [
-    (validator.field) = {
-      msg_exists: true
-    }
-  ];
+  // provisioner is the service provisioner.
+  oneof provisioner {
+    // EKSProvisioner holds the necessary fields to connect to an EKS cluster.
+    EKSProvisioner eks_provisioner = 1;
+  }
   // Cluster name.
   string name = 2 [
     (validator.field) = {
@@ -72,12 +71,11 @@ message GetPSMDBClusterCredentialsResponse {
 }
 
 message CreatePSMDBClusterRequest {
-  // Kubernetes auth.
-  KubeAuth kube_auth = 1 [
-    (validator.field) = {
-      msg_exists: true
-    }
-  ];
+  // provisioner is the service provisioner.
+  oneof provisioner {
+    // EKSProvisioner holds the necessary fields to connect to an EKS cluster.
+    EKSProvisioner eks_provisioner = 1;
+  }
   // Cluster name.
   string name = 2 [
     (validator.field) = {
@@ -99,12 +97,11 @@ message CreatePSMDBClusterRequest {
 message CreatePSMDBClusterResponse {}
 
 message UpdatePSMDBClusterRequest {
-  // Kubernetes auth.
-  KubeAuth kube_auth = 1 [
-    (validator.field) = {
-      msg_exists: true
-    }
-  ];
+  // provisioner is the service provisioner.
+  oneof provisioner {
+    // EKSProvisioner holds the necessary fields to connect to an EKS cluster.
+    EKSProvisioner eks_provisioner = 1;
+  }
   // Cluster name.
   string name = 2 [
     (validator.field) = {
@@ -136,12 +133,11 @@ message UpdatePSMDBClusterRequest {
 message UpdatePSMDBClusterResponse {}
 
 message DeletePSMDBClusterRequest {
-  // Kubernetes auth.
-  KubeAuth kube_auth = 1 [
-    (validator.field) = {
-      msg_exists: true
-    }
-  ];
+  // provisioner is the service provisioner.
+  oneof provisioner {
+    // EKSProvisioner holds the necessary fields to connect to an EKS cluster.
+    EKSProvisioner eks_provisioner = 1;
+  }
   // Cluster name.
   string name = 2 [
     (validator.field) = {
@@ -153,12 +149,11 @@ message DeletePSMDBClusterRequest {
 message DeletePSMDBClusterResponse {}
 
 message RestartPSMDBClusterRequest {
-  // Kubernetes auth.
-  KubeAuth kube_auth = 1 [
-    (validator.field) = {
-      msg_exists: true
-    }
-  ];
+  // provisioner is the service provisioner.
+  oneof provisioner {
+    // EKSProvisioner holds the necessary fields to connect to an EKS cluster.
+    EKSProvisioner eks_provisioner = 1;
+  }
   // Cluster name.
   string name = 2 [
     (validator.field) = {
