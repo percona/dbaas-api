@@ -13,6 +13,8 @@ service OLMOperatorAPI {
   rpc InstallOLMOperator(InstallOLMOperatorRequest) returns (InstallOLMOperatorResponse);
   // InstallOperator installs an operator usin OLM.
   rpc InstallOperator(InstallOperatorRequest) returns (InstallOperatorResponse);
+  // ListInstallPlans gets the list of install plans matching the criteria.
+  rpc ListInstallPlans(ListInstallPlansRequest) returns (ListInstallPlansResponse);
 }
 
 // InstallOLMOperatorRequest has the necesary fields to start an OLM operator installation.
@@ -59,3 +61,38 @@ message InstallOperatorRequest {
 
 // InstallOperatorResponse holds the response after installing an operator via OLM.
 message InstallOperatorResponse {}
+
+// ListInstallPlansRequest gets the list of install plans for a namespace.
+message ListInstallPlansRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Destination namespace.
+  string namespace = 2;
+  // Operator's name.
+  string name = 3;
+  // Operator group to create.
+  bool only_not_approved = 4;
+}
+
+// ListInstallPlansResponse has all the install plans for the install plans list request.
+message ListInstallPlansResponse {
+  // InstallPlan item.
+  message InstallPlan {
+    // Namespace.
+    string namespace = 1;
+    // Name.
+    string name = 2;
+    // CSV.
+    string csv = 3;
+    // Approval: manual, automatic.
+    string approval = 4;
+    // Approved.
+    bool approved = 5;
+  }
+  // List install plan items.
+  repeated InstallPlan items = 1;
+}
