@@ -75,7 +75,7 @@ message ListInstallPlansRequest {
   // Operator's name.
   string name = 3;
   // Operator group to create.
-  bool only_not_approved = 4;
+  bool not_approved_only = 4;
 }
 
 // ListInstallPlansResponse has all the install plans for the install plans list request.
