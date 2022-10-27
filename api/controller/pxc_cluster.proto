@@ -39,6 +39,8 @@ message PXCClusterParams {
         int_gt: 0
       }
     ];
+    // PXC configuration.
+    string configuration = 4;
   }
   // ProxySQL container parameters.
   message ProxySQL {

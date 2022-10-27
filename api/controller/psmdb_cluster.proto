@@ -53,6 +53,8 @@ message PSMDBClusterParams {
   string version_service_url = 4;
   // PSMDB Backup image.
   string backup_image = 5;
+  // PSMDB engine configuration.
+  string configuration = 6;
 }
 
 // PSMDBCredentials represents the credentials needed to connect to the cluster.
