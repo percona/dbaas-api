@@ -15,6 +15,8 @@ service OLMOperatorAPI {
   rpc InstallOperator(InstallOperatorRequest) returns (InstallOperatorResponse);
   // ListInstallPlans gets the list of install plans matching the criteria.
   rpc ListInstallPlans(ListInstallPlansRequest) returns (ListInstallPlansResponse);
+  // ApproveInstallPlan approves an install plan for installation or upgrade.
+  rpc ApproveInstallPlan(ApproveInstallPlanRequest) returns (ApproveInstallPlanResponse);
 }
 
 // InstallOLMOperatorRequest has the necesary fields to start an OLM operator installation.
@@ -96,3 +98,20 @@ message ListInstallPlansResponse {
   // List install plan items.
   repeated InstallPlan items = 1;
 }
+
+// ApproveInstallPlanRequest has the necesary fields to approve an install plan for installation or upgrade.
+message ApproveInstallPlanRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Namespace.
+  string namespace = 2;
+  // Name is install plan name.
+  string name = 3;
+}
+
+// ApproveInstallPlanResponse is the install plan approval response.
+message ApproveInstallPlanResponse {}

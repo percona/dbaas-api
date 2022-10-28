@@ -69,3 +69,17 @@ func (this *ListInstallPlansResponse) Validate() error {
 func (this *ListInstallPlansResponse_InstallPlan) Validate() error {
 	return nil
 }
+func (this *ApproveInstallPlanRequest) Validate() error {
+	if nil == this.KubeAuth {
+		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
+	}
+	if this.KubeAuth != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.KubeAuth); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
+		}
+	}
+	return nil
+}
+func (this *ApproveInstallPlanResponse) Validate() error {
+	return nil
+}
