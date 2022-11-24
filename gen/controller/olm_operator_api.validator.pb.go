@@ -94,6 +94,25 @@ func (this *ListSubscriptionsRequest) Validate() error {
 	}
 	return nil
 }
+func (this *GetSubscriptionRequest) Validate() error {
+	if nil == this.KubeAuth {
+		return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", fmt.Errorf("message must exist"))
+	}
+	if this.KubeAuth != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.KubeAuth); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("KubeAuth", err)
+		}
+	}
+	return nil
+}
+func (this *GetSubscriptionResponse) Validate() error {
+	if this.Subscription != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Subscription); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Subscription", err)
+		}
+	}
+	return nil
+}
 func (this *ListSubscriptionsResponse) Validate() error {
 	for _, item := range this.Items {
 		if item != nil {
@@ -102,8 +121,5 @@ func (this *ListSubscriptionsResponse) Validate() error {
 			}
 		}
 	}
-	return nil
-}
-func (this *ListSubscriptionsResponse_Subscription) Validate() error {
 	return nil
 }

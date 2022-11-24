@@ -5,6 +5,7 @@ package percona.platform.dbaas.controller.v1beta1;
 option go_package = "controller;controllerv1beta1";
 
 import "controller/common.proto";
+import "controller/olm_types.proto";
 import "github.com/mwitkow/go-proto-validators/validator.proto";
 
 // OLMOperatorAPI provides APIs for managing OLM.
@@ -19,6 +20,8 @@ service OLMOperatorAPI {
   rpc ApproveInstallPlan(ApproveInstallPlanRequest) returns (ApproveInstallPlanResponse);
   // ListSubscriptions lists all available subscriptions.
   rpc ListSubscriptions(ListSubscriptionsRequest) returns (ListSubscriptionsResponse);
+  // GetSubscription returns a subscription by name.
+  rpc GetSubscription(GetSubscriptionRequest) returns (GetSubscriptionResponse);
 }
 
 // InstallOLMOperatorRequest has the necesary fields to start an OLM operator installation.
@@ -131,27 +134,28 @@ message ListSubscriptionsRequest {
   ];
 }
 
+// ListSubscriptionsRequest request subscriptions/
+message GetSubscriptionRequest {
+  // Kubernetes auth.
+  KubeAuth kube_auth = 1 [
+    (validator.field) = {
+      msg_exists: true
+    }
+  ];
+  // Namespace.
+  string namespace = 2;
+  // Subscription name. Usually is the operator's name.
+  string name = 3;
+}
+
+// GetSubscriptionResponse response.
+message GetSubscriptionResponse {
+  // Items is the actual list of subscriptions.
+  Subscription subscription = 1;
+}
+
 // ListSubscriptionsResponse response.
 message ListSubscriptionsResponse {
-  // Subscription item.
-  message Subscription {
-    // Namespace.
-    string namespace = 1;
-    // Subscription name.
-    string name = 2;
-    // Package is the operator name.
-    string package = 3;
-    // Source is the catalog source.
-    string source = 4;
-    // Channel.
-    string channel = 5;
-    // Latest known csv.
-    string current_csv = 6;
-    // Currently installed csv.
-    string installed_csv = 7;
-    // Install Plan name.
-    string install_plan_name = 8;
-  }
   // Items is the actual list of subscriptions.
   repeated Subscription items = 1;
 }
