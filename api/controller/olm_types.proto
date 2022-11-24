@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package percona.platform.dbaas.controller.v1beta1;
+
+option go_package = "controller;controllerv1beta1";
+
+// Subscription represents an OLM operator subscription.
+message Subscription {
+  // Namespace.
+  string namespace = 1;
+  // Subscription name.
+  string name = 2;
+  // Package is the operator name.
+  string package = 3;
+  // Source is the catalog source.
+  string source = 4;
+  // Channel.
+  string channel = 5;
+  // Latest known csv.
+  string current_csv = 6;
+  // Currently installed csv.
+  string installed_csv = 7;
+  // Install Plan name.
+  string install_plan_name = 8;
+}
