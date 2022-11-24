@@ -113,6 +113,9 @@ message ApproveInstallPlanRequest {
   string namespace = 2;
   // Name is install plan name.
   string name = 3;
+  // Subscription name.
+  // This is used in cases when we don't have the install plan name but we know the subscription name.
+  string subscription_name = 4;
 }
 
 // ApproveInstallPlanResponse is the install plan approval response.
@@ -146,6 +149,8 @@ message ListSubscriptionsResponse {
     string current_csv = 6;
     // Currently installed csv.
     string installed_csv = 7;
+    // Install Plan name.
+    string install_plan_name = 8;
   }
   // Items is the actual list of subscriptions.
   repeated Subscription items = 1;
