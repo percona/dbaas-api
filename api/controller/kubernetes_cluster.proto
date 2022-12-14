@@ -20,6 +20,10 @@ message Operators {
   string pxc_operator_version = 1;
   // Percona Server for MongoDB Operator Version.
   string psmdb_operator_version = 2;
+  // Victoria Metrics Operator Version.
+  string vm_operator_version = 3;
+  // OLM Operator Version.
+  string olm_operator_version = 4;
 }
 
 // Resources contains Kubernetes cluster resources.
